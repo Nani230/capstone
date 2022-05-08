@@ -1,0 +1,522 @@
+@media (max-width: 280px) {
+    .App {
+        width: 100% !important;
+    }
+    .index {
+        width: 100% !important;
+    }
+    .user-main {
+        width: 100% !important;
+        height: 350px !important;
+    }
+    .user-navbar {
+        width: 100% !important;
+        display: flex;
+        justify-content: flex-start;
+    }
+    .user-mains {
+        width: 100% !important;
+        height: 280px !important;
+        margin-top: 20px !important;
+    }
+
+    .user-main-container {
+        width: 100% !important;
+        display: flex;
+        align-items: flex-start;
+        justify-content: first s !important;
+    }
+    .index-navbar-title {
+        font-size: 100% !important;
+        margin-top: 15px !important;
+        text-align: left !important;
+        margin-right: 0px !important;
+    }
+
+    .re-mobile-navbar {
+        display: block !important;
+    }
+    .index-navbar-btns {
+        display: none !important;
+    }
+    .user-main-details {
+        width: 50% !important;
+        margin-left: 20px !important;
+    }
+    .user-main-img {
+        width: 50% !important;
+        height: 30vh !important;
+        margin-bottom: 100px !important;
+    }
+    .user-main-h1,
+    .user-main-h11 {
+        font-size: 100% !important;
+    }
+    .user-main-p {
+        font-size: 70% !important;
+    }
+    .user-main-h2 {
+        text-align: center !important;
+        font-size: 140% !important;
+    }
+    .index-display-main {
+        width: 100% !important;
+        padding: 0px !important;
+    }
+    .index-display {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .hotal-main {
+        margin-bottom: 20px !important;
+        width: 250px !important;
+    }
+    .poster {
+        width: 93% !important;
+    }
+    /* css for sliders */
+    .wrong-btn {
+        color: white;
+        font-size: 200% !important;
+    }
+    /* css for restarent index */
+
+    .res-btn {
+        display: none;
+    }
+    .res-title {
+        text-align: left;
+        font-size: 100% !important;
+        margin-top: 10px !important;
+        margin-right: 0px !important;
+    }
+    .res-another-details {
+        margin-top: 10px !important;
+        width: 150% !important;
+        margin-right: 20px !important;
+        text-align: center;
+        margin-left: 15px !important;
+    }
+    .res-another-titles > h1 {
+        font-size: 100% !important;
+    }
+    .res-another-titles > p {
+        font-size: 100% !important;
+    }
+    .res-another-reg-btns {
+        margin-right: 20px !important;
+        display: flex;
+    }
+
+    .res-another-reg-btn {
+        font-size: 10px !important;
+        width: 220px !important;
+        padding-top: 10px;
+        padding-bottom: 10px !important;
+    }
+    .res-another-sigin-btn {
+        font-size: 11px !important;
+        width: 250px !important;
+        margin-top: 10px !important;
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+        margin-left: 0px !important;
+    }
+    .res-main-container {
+        height: 300px !important;
+        display: flex;
+        justify-content: flex-start;
+    }
+    .res-work-container > h1 {
+        font-size: 20px !important;
+    }
+    .res-work-container > p {
+        font-size: 15px !important;
+    }
+    .res-work {
+        padding-top: 20px !important;
+        padding-bottom: 20px !important;
+    }
+    .res-step-container {
+        height: 150vh;
+    }
+    .res-cards {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+    .res-card > p {
+        font-size: 15px !important;
+    }
+    .res-card {
+        width: 250px !important;
+        margin-bottom: 10px !important;
+        border: 1px solid #c8bcbc;
+    }
+    /* css for login page */
+    .registration {
+        width: 100% !important;
+        height: 500px !important;
+    }
+    .register-details {
+        margin-top: 50px !important;
+    }
+    .logininput3 {
+        width: 220px !important;
+    }
+    .logininput4 {
+        width: 220px !important;
+    }
+    .reg-hl {
+        font-size: 20px !important;
+    }
+    .reg-p {
+        font-size: 15px !important;
+        margin-left: 0px !important;
+    }
+    .reg-btns {
+        width: 250px !important;
+    }
+
+    /* css for registration */
+    .input3 {
+        width: 200px !important;
+    }
+    .reg-h1 {
+        font-size: 15px !important;
+        margin-left: 0px !important;
+    }
+    .reg-inputes {
+        width: 270px !important;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+    .input1 {
+        width: 100px !important;
+        margin-left: 0px !;
+    }
+    .input2 {
+        width: 100px !important;
+    }
+    .input3 {
+        width: 100px !important;
+        margin-left: 0px !important;
+    }
+    .input4 {
+        width: 100px !important;
+    }
+    .input5 {
+        width: 230px !important;
+        margin-left: 0px !important;
+    }
+    /* css for restarent login page */
+    .logininput1 {
+        width: 200px !important;
+    }
+    .logininput2 {
+        width: 200px !important;
+    }
+    /* css for restarent singup */
+    .res-reg-container {
+        width: 100% !important;
+    }
+    .res-reg-details {
+        width: 275px;
+        padding-left: 0px !important;
+        margin-left: 10px !important;
+    }
+    .res-reg-details > h1 {
+        font-size: 15px !important;
+    }
+    .res-reg-inputes {
+        width: 90% !important;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 70px !important;
+    }
+
+    .res-reg-inputes > input {
+        width: 50% !important;
+    }
+    .res-main-input5 {
+        width: 100px !important;
+    }
+
+    /* css for restarent home */
+    .navbar-title {
+        font-size: 15px !important;
+        margin-right: 0px !important;
+    }
+    .res-navbar-details {
+        margin-right: 0px !important;
+    }
+    .res-user-display-side > h1 {
+        font-size: 20px !important;
+    }
+    .res-user-display-side > p {
+        font-size: 13px !important;
+    }
+    .res-user-display-side {
+        margin-left: 0px !important;
+    }
+    .res-poster-url {
+        width: 100% !important;
+        height: 200px !important;
+        margin-right: 0px !important;
+    }
+    .restaurent-mains {
+        height: 450px !important;
+    }
+    .restaurent-main-container {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        height: 450px !important;
+    }
+    .add-title {
+        width: 250px !important;
+        margin-left: 12px !important;
+    }
+    .restaurent-user-display {
+        width: 100% !important;
+    }
+    .restarent-navbar {
+        margin-bottom: 1px !important;
+        width: 100%;
+    }
+    /* css for usermain page */
+    .main-title-name {
+        margin-left: 10px !important;
+        margin-right: 0px !important;
+        font-size: 17px !important;
+        margin-top: 15px !important;
+    }
+    .user-navbar-btn {
+        display: none;
+    }
+    .user-navbar-btn-2 {
+        margin-left: 100px !important;
+    }
+    /* css for global allorders */
+    .cart-box {
+        width: 90% !important;
+        height: 270px !important;
+        display: flex;
+        margin-top: 50px !important;
+        flex-direction: column;
+    }
+    .item-quan {
+        margin-top: 0px !important;
+        font-size: 12px;
+        margin-bottom: 0px !important;
+        margin-left: 10px !important;
+    }
+    .orderstatus {
+        width: 100% !important;
+        margin-top: 0px !important;
+        margin-left: 10px;
+        font-size: 10px;
+    }
+    .items-details > p {
+        margin-top: 0px;
+    }
+    .font-icons {
+        width: 80% !important;
+        margin-left: 20px !important;
+        margin-bottom: 10px !important;
+        display: flex;
+        margin-top: 0px !important;
+        justify-content: space-between;
+    }
+    .cart-pen {
+        margin-top: 0px !important;
+    }
+    .order-font-icons {
+        width: 90% !important;
+        font-size: 10px !important;
+        margin: 0px !important;
+        margin-top: 0px !important;
+        margin-bottom: 10px !important;
+        display: flex;
+        justify-content: space-around;
+    }
+    .font-icons > span {
+        margin-top: 0px;
+
+        font-size: 10px;
+    }
+    .font-icons > span:nth-child(2) {
+        font-size: 10px;
+        margin-left: 50px;
+    }
+    .cart-poster {
+        width: 90% !important;
+        height: 130px !important;
+    }
+    .items-details {
+        width: 100% !important;
+        margin-top: 10px !important;
+    }
+    .items-details > p {
+        font-size: 10px !important;
+        margin-left: 13px !important;
+    }
+    .item-des {
+        font-size: 10px !important;
+        margin-left: 13px !important;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        font-weight: bold;
+    }
+    .item-container {
+        width: 100% !important;
+    }
+    /* css for cart */
+    .cart-quantits {
+        margin-top: 0px !important;
+        margin-left: 23px !important;
+        width: 50% !important;
+        font-size: 13px;
+        display: flex;
+        justify-content: flex-start;
+        justify-content: space-between;
+    }
+    .cart-quantits > p {
+        margin-top: 0px !important;
+    }
+    .orders-items-details {
+        font-size: 10px !important;
+        margin-top: 0px !important;
+    }
+    .orders-items-details > p {
+        margin-top: 0px !important;
+    }
+    .cart-main-container {
+        margin-top: 1000px !important;
+        width: 250px !important;
+    }
+    .cart-food-main-container {
+        padding-left: 0px !important;
+    }
+    .cart-btn {
+        margin-top: 0px !important;
+    }
+    .payment-title {
+        font-size: 8px;
+    }
+    .check-out {
+        width: 200px;
+    }
+    .res-reg-img {
+        display: none;
+    }
+    .cart-quantity > p {
+        margin-top: 0px !important;
+    }
+
+    /* css for sliders */
+    .menu-lines {
+        margin-left: 10px;
+    }
+    .wrong-btn {
+        margin-left: 15px;
+        margin-top: 10px !important;
+        margin-right: 13px !important;
+        font-size: 33.2px !important;
+    }
+    .main-lines {
+        margin-top: 10px !important;
+        margin-right: 15px;
+    }
+    .main-wrong-btn {
+        font-size: 35px !important;
+        margin-right: 25px !important;
+    }
+    .main-mobile-navbar {
+        margin-top: 5px !important;
+    }
+    .slider {
+        margin-top: 2px;
+        position: fixed !important;
+    }
+    .user-navbar {
+        position: fixed !important;
+        top: 0px !important;
+    }
+    .res-btn-login {
+        color: black;
+        border: none;
+        margin-top: 10px !important;
+    }
+    .resindex-btns {
+        line-height: 0 !important;
+    }
+    .index-mobile-navbar {
+        margin-top: 5px !important;
+    }
+    .index-main-line {
+        margin-top: 10px !important;
+        margin-right: 1.7px !important;
+    }
+    .index-slider {
+        margin-top: 5px !important;
+    }
+    /* css for login  */
+    .login-side-img {
+        height: 200px !important;
+    }
+    .foo-title {
+        margin-top: 50px !important;
+    }
+    /* css for user main */
+    .food-main-container {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+    /* css for box */
+    .res-update {
+        width: 90% !important;
+        left: 5% !important;
+    }
+    .res-main-input1,
+    .res-main-input2,
+    .res-main-input3,
+    .res-main-input4 {
+        width: 85% !important;
+    }
+    .res-btn-signup {
+        border: none;
+        background-color: transparent;
+    }
+    .cart-quantity {
+        margin-left: 45px !important;
+    }
+    .reg-btns {
+        width: 200px !important;
+    }
+    .explore-btn {
+        margin-right: 0px !important;
+    }
+    .restarent-update {
+        width: 270px !important;
+        border: 3px solid #c8bcbc !important;
+        height: 400px !important;
+        border-radius: 20px !important;
+        z-index: 10 !important;
+        margin-top: 20px !important;
+        bottom: 200px !important;
+        position: fixed !important;
+        left: 1%;
+        top: 0%;
+        background-color: #fff;
+    }
+    .reg-signup-btn {
+        margin-left: 110px;
+    }
+    .regs-signup-btn {
+        margin-left: 0px !important;
+        margin-right: 110px !important;
+    }
+}

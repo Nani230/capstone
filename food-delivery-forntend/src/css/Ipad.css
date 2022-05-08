@@ -1,0 +1,521 @@
+@media (max-width: 640px) {
+    .App {
+        width: 100%;
+    }
+    .index {
+        width: 100%;
+    }
+    .user-main {
+        width: 100%;
+        height: 400px;
+    }
+    .user-navbar {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+    }
+    .user-mains {
+        width: 100%;
+        height: 400px;
+        margin-top: 70px;
+    }
+
+    .user-main-container {
+        width: 100% !important;
+        display: flex;
+        align-items: flex-start;
+        justify-content: first s !important;
+    }
+    .index-navbar-title {
+        font-size: 120%;
+        margin-top: 10px;
+        text-align: left;
+        margin-right: 0px;
+    }
+
+    .re-mobile-navbar {
+        display: block;
+    }
+    .index-navbar-btns {
+        display: none;
+    }
+    .user-main-details {
+        width: 50%;
+        margin-left: 20px;
+    }
+    .user-main-img {
+        width: 60%;
+        height: 50vh;
+        margin-bottom: 100px;
+    }
+    .user-main-h1,
+    .user-main-h11 {
+        font-size: 200%;
+    }
+    .user-main-p {
+        font-size: 100%;
+    }
+    .user-main-h2 {
+        text-align: center;
+        font-size: 140%;
+    }
+    .index-display-main {
+        width: 100%;
+        padding: 0px;
+    }
+    .index-display {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .hotal-main {
+        margin-bottom: 20px;
+        width: 350px;
+    }
+    .poster {
+        width: 93%;
+    }
+    /* css for sliders */
+    .wrong-btn {
+        color: white;
+        font-size: 200%;
+    }
+    /* css for restarent index */
+
+    .res-btn {
+        display: none;
+    }
+    .res-title {
+        text-align: left;
+        font-size: 100%;
+        margin-top: 10px;
+        margin-right: 0px;
+    }
+    .res-another-details {
+        margin-top: 30px;
+        width: 150%;
+        margin-right: 20px !important;
+        text-align: center;
+        margin-left: 20px;
+    }
+    .res-another-titles > h1 {
+        font-size: 150%;
+    }
+    .res-another-titles > p {
+        font-size: 150%;
+    }
+    .res-another-reg-btns {
+        margin-right: 20px;
+        display: flex;
+    }
+
+    .res-another-reg-btn {
+        font-size: 15px;
+        width: 300px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .res-another-btns {
+        display: flex;
+        flex-direction: column;
+    }
+    .res-another-sigin-btn {
+        font-size: 15px;
+        width: 350px;
+        margin-top: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-left: 0px;
+    }
+    .res-main-container {
+        height: 350px;
+        display: flex;
+        justify-content: flex-start;
+    }
+    .res-work-container > h1 {
+        font-size: 20px;
+    }
+    .res-work-container > p {
+        font-size: 15px;
+    }
+    .res-work {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .res-cards {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .res-step-container {
+        height: 1000px;
+    }
+    .res-card {
+        width: 350px;
+        margin-bottom: 10px;
+        border: 1px solid #c8bcbc;
+    }
+    /* css for login page */
+    .registration {
+        width: 100%;
+        height: 500px;
+    }
+    .register-details {
+        margin-top: 50px;
+    }
+    .logininput3 {
+        width: 220px;
+    }
+    .logininput4 {
+        width: 220px;
+    }
+    .reg-hl {
+        font-size: 20px;
+    }
+    .reg-p {
+        font-size: 20px;
+        margin-left: 0px;
+    }
+    .res-work-container {
+        margin-top: 50px;
+    }
+    .res-card > p {
+        font-size: 20px;
+    }
+    .res-card > h5 {
+        font-size: 17px;
+    }
+    .reg-btns {
+        width: 250px;
+    }
+
+    /* css for registration */
+    .input3 {
+        width: 200px;
+    }
+    .reg-h1 {
+        font-size: 15px;
+        margin-left: 0px;
+    }
+    .reg-inputes {
+        width: 270px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+    .input1 {
+        width: 100px;
+        margin-left: 0px;
+    }
+    .input2 {
+        width: 100px;
+    }
+    .input3 {
+        width: 100px;
+        margin-left: 0px;
+    }
+    .input4 {
+        width: 100px;
+    }
+    .input5 {
+        width: 230px;
+        margin-left: 0px;
+    }
+    /* css for restarent login page */
+    .logininput1 {
+        width: 200px;
+    }
+    .logininput2 {
+        width: 200px;
+    }
+    /* css for restarent singup */
+    .res-reg-container {
+        width: 100%;
+    }
+    .res-reg-details {
+        padding-left: 0px;
+        margin-left: 10px;
+    }
+    .res-reg-details > h1 {
+        font-size: 15px;
+    }
+    .res-reg-inputes {
+        width: 250px;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 70px;
+    }
+
+    .res-reg-inputes > input {
+        width: 100px;
+    }
+    .restaurantname {
+        margin-top: 0px;
+    }
+
+    /* css for restarent home */
+    .navbar-title {
+        font-size: 15px;
+        margin-right: 0px;
+    }
+    .res-navbar-details {
+        margin-right: 0px;
+    }
+    .res-user-display-side > h1 {
+        font-size: 20px;
+        margin-left: 10px;
+    }
+    .res-user-display-side > p {
+        margin-left: 10px;
+
+        font-size: 13px;
+    }
+    .res-user-display-side {
+        margin-left: 0px;
+    }
+    .res-poster-url {
+        width: 100%;
+        height: 200px;
+        margin-right: 0px !important;
+    }
+    .restaurent-mains {
+        height: 450px;
+    }
+    .restaurent-main-container {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        height: 450px;
+    }
+    .add-title {
+        width: 250px;
+        margin-left: 150px;
+    }
+    .restaurent-user-display {
+        width: 100%;
+    }
+    .restarent-navbar {
+        margin-bottom: 1px;
+    }
+    /* css for usermain page */
+    .main-title-name {
+        margin-left: 10px;
+        margin-right: 0px;
+        font-size: 17px;
+        margin-top: 15px;
+    }
+    .user-navbar-btn {
+        display: none;
+    }
+    .user-navbar-btn-2 {
+        margin-left: 100px;
+    }
+    /* css for global allorders */
+    .cart-box {
+        height: 270px;
+        display: flex;
+        margin-top: 50px;
+        flex-direction: column;
+    }
+    .cart-quantits {
+        margin-top: 0px !important;
+        margin-left: 23px !important;
+        width: 50% !important;
+        font-size: 13px;
+        display: flex;
+        justify-content: flex-start;
+        justify-content: space-between;
+    }
+    .cart-quantits > p {
+        margin-top: 0px !important;
+    }
+    .cart-poster {
+        width: 90% !important;
+        height: 130px;
+    }
+    .items-details {
+        width: 100%;
+        margin-top: 10px;
+    }
+    .items-details > p {
+        font-size: 15px;
+        margin-left: 13px;
+    }
+    .item-des {
+        font-size: 15px;
+        margin-left: 13px;
+        font-weight: bold;
+    }
+    .item-container {
+        width: 100%;
+    }
+    /* css for cart */
+    .cart-quantity {
+        margin-top: 0px;
+        margin-left: 20% !important;
+        width: 50%;
+        display: flex;
+        justify-content: flex-start;
+        justify-content: space-between;
+    }
+    .cart-main-container {
+        width: 250px;
+        margin-top: 1000px !important;
+    }
+    .res-main-input5 {
+        width: 200px !important;
+    }
+    .cart-btn {
+        margin-top: 0px;
+    }
+    .cart-quantity > p {
+        margin-top: 0px;
+    }
+
+    /* css for sliders */
+
+    .menu-lines {
+        margin-left: 10px;
+    }
+    .wrong-btn {
+        margin-left: 15px;
+        margin-top: 10px !important;
+        margin-right: 13px;
+        font-size: 33.2px !important;
+    }
+    .main-lines {
+        margin-top: 10px !important;
+        margin-right: 15px;
+    }
+    .main-wrong-btn {
+        font-size: 35px !important;
+        margin-right: 25px;
+    }
+    .main-mobile-navbar {
+        margin-top: 5px !important;
+    }
+    .slider {
+        margin-top: 2px;
+        position: fixed;
+    }
+    .user-navbar {
+        position: fixed;
+        top: 0px;
+    }
+    .res-btn-login {
+        color: black;
+        border: none;
+        margin-top: 10px;
+    }
+    .resindex-btns {
+        line-height: 0 !important;
+    }
+    .index-mobile-navbar {
+        margin-top: 5px;
+    }
+    .index-main-line {
+        margin-top: 10px;
+        margin-right: 1.7px;
+    }
+    .index-slider {
+        margin-top: 5px;
+    }
+    /* css for login  */
+    .login-side-img {
+        height: 200px;
+    }
+    .foo-title {
+        margin-top: 50px;
+    }
+    /* css for fotter */
+    .footer {
+        padding-top: 50px;
+        padding-bottom: 0px;
+    }
+    .footers {
+        height: auto;
+    }
+    .getintouch {
+        height: auto;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .footer-container > div {
+        width: 100%;
+    }
+    .fimg {
+        width: 111px;
+        height: 111px;
+        margin-bottom: 20px;
+    }
+
+    .fimage > img {
+        width: 100%;
+        height: 100%;
+    }
+    .footer-images {
+        width: 100%;
+        height: auto;
+        justify-content: space-between;
+    }
+    .footer-gallery {
+        width: 100% !;
+        align-items: center;
+    }
+    .contact {
+        height: auto;
+    }
+    .social-media-icon {
+        height: auto;
+        margin-bottom: 20px;
+    }
+    .footer-title {
+        margin-top: 25px;
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: normal;
+        line-height: 21.8182px;
+        text-align: center;
+    }
+    .links {
+        width: 80%;
+    }
+    .quick-links {
+        margin-bottom: 0px;
+    }
+    .links-child {
+        width: 40%;
+        font-size: 13px;
+        font-weight: 400;
+        letter-spacing: 0.65px;
+    }
+    .contact-detail {
+        font-size: 13px;
+        font-weight: 400;
+        letter-spacing: 0.65px;
+        text-align: center;
+    }
+    .getintouch {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .contact {
+        width: 80%;
+    }
+    .contact-icon {
+        text-align: center;
+    }
+    .reg-btns {
+        width: 100% !important;
+        display: flex !important;
+        justify-content: space-between !important;
+    }
+    .explore-btn {
+        margin-right: 0px !important;
+    }
+}
