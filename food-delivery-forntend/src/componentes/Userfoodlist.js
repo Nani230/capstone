@@ -1,59 +1,60 @@
-import { useEffect, useRef, useState } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
-import { MdClose, MdCall, MdLocationOn } from "react-icons/md";
-import { FaFacebookF, FaInstagram } from "react-icons/fa";
-import { FaRupeeSign } from "react-icons/fa";
+import { baseURL } from '../App';
+import { useEffect, useRef, useState } from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import { MdClose, MdCall, MdLocationOn } from 'react-icons/md';
+import { FaFacebookF, FaInstagram } from 'react-icons/fa';
+import { FaRupeeSign } from 'react-icons/fa';
 
-import { GrMail } from "react-icons/gr";
+import { GrMail } from 'react-icons/gr';
 function Userfoodlist() {
     // user localStorage
-    let datas = JSON.parse(localStorage.getItem("details"));
+    let datas = JSON.parse(localStorage.getItem('details'));
     // this is useState
     let [state, setstate] = useState(false);
     let [addstate, setaddstate] = useState(false);
     let [orderaddstate, ordersetaddstate] = useState(false);
-    let [id, setid] = useState("nothing");
-    let [orderid, ordersetid] = useState("nothing");
-    let [resid, ressetid] = useState("nothing");
-    let [orderresid, orderressetid] = useState("nothing");
+    let [id, setid] = useState('nothing');
+    let [orderid, ordersetid] = useState('nothing');
+    let [resid, ressetid] = useState('nothing');
+    let [orderresid, orderressetid] = useState('nothing');
     let [allitems, setitems] = useState([]);
     let [hotel, sethotal] = useState([]);
     let [useraddres, setuseraddres] = useState([]);
     let [score, setScore] = useState(1);
     let [quantity, setquantity] = useState(1);
     let [orderquantity, ordersetquantity] = useState(1);
-    let [message, setmessage] = useState("");
+    let [message, setmessage] = useState('');
     let [box, setbox] = useState(false);
     // this is inner css
     let style = {
-        width: "70%",
-        height: "100vh",
-        color: "#fff",
+        width: '70%',
+        height: '100vh',
+        color: '#fff',
         lineHeight: 10,
-        backgroundColor: "#fff",
-        marginLeft: "0px",
+        backgroundColor: '#fff',
+        marginLeft: '0px',
         // display: "none",
 
-        transition: "0.50s",
+        transition: '0.50s',
     };
     let styles = {
-        width: "50%",
-        height: "100vh",
-        color: "#fff",
+        width: '50%',
+        height: '100vh',
+        color: '#fff',
         lineHeight: 10,
-        padding: "1.5em",
-        backgroundColor: "#fff",
-        marginLeft: "-1400px",
-        transition: "0.50s",
+        padding: '1.5em',
+        backgroundColor: '#fff',
+        marginLeft: '-1400px',
+        transition: '0.50s',
     };
     let border = {
-        border: "1px solid #e1e1e1",
+        border: '1px solid #e1e1e1',
     };
     // this function for logout
     let navigate = useNavigate();
     function logout() {
-        localStorage.removeItem("details");
-        navigate("/");
+        localStorage.removeItem('details');
+        navigate('/');
     }
     // this is use parames to prams in url
     let prams = useRef(useParams());
@@ -88,34 +89,28 @@ function Userfoodlist() {
     }
     //    this is useEffect to fech restaurent  and items
     useEffect(() => {
-        let token = JSON.parse(localStorage.getItem("details"));
+        let token = JSON.parse(localStorage.getItem('details'));
         let realtoken = token.token;
 
-        fetch(
-            `http://localhost:8000/restaurantuser/allresturent/${prams.current.id}`,
-            {
-                method: "GET",
-            }
-        )
+        fetch(`${baseURL}/restaurantuser/allresturent/${prams.current.id}`, {
+            method: 'GET',
+        })
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
                 sethotal(data);
             });
 
-        fetch(
-            `http://localhost:8000/restaurantuser/items/${prams.current.id}`,
-            {
-                method: "GET",
-            }
-        )
+        fetch(`${baseURL}/restaurantuser/items/${prams.current.id}`, {
+            method: 'GET',
+        })
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
                 setitems(data);
             });
-        fetch("http://localhost:8000/cart/addres/" + datas.id, {
-            method: "GET",
+        fetch(`${baseURL}/cart/addres/` + datas.id, {
+            method: 'GET',
             headers: {
                 Authorization: `Bearer ${realtoken}`,
             },
@@ -144,13 +139,13 @@ function Userfoodlist() {
     // this for order
 
     function addres() {
-        let token = JSON.parse(localStorage.getItem("details"));
+        let token = JSON.parse(localStorage.getItem('details'));
         let realtoken = token.token;
-        fetch(`http://localhost:8000/cart/addres/${datas.id}`, {
-            method: "put",
+        fetch(`${baseURL}/cart/addres/${datas.id}`, {
+            method: 'put',
             headers: {
                 Authorization: `Bearer ${realtoken}`,
-                "Content-Type": "application/json",
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify(addresuser),
         })
@@ -162,13 +157,13 @@ function Userfoodlist() {
 
     // this function is to add items in cart
     function cart() {
-        let token = JSON.parse(localStorage.getItem("details"));
+        let token = JSON.parse(localStorage.getItem('details'));
         let realtoken = token.token;
-        fetch(`http://localhost:8000/cart/addItem`, {
-            method: "POST",
+        fetch(`${baseURL}/cart/addItem`, {
+            method: 'POST',
             headers: {
                 Authorization: `Bearer ${realtoken}`,
-                "Content-Type": "application/json",
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify(users),
         })
@@ -183,19 +178,19 @@ function Userfoodlist() {
                         setbox(false);
                     }, 1500);
                 } else {
-                    console.log("nothinf");
+                    console.log('nothinf');
                 }
             });
     }
     // this function is for to order items
     function order() {
-        let token = JSON.parse(localStorage.getItem("details"));
+        let token = JSON.parse(localStorage.getItem('details'));
         let realtoken = token.token;
-        fetch(`http://localhost:8000/order/create/${datas.id}`, {
-            method: "POST",
+        fetch(`${baseURL}/order/create/${datas.id}`, {
+            method: 'POST',
             headers: {
                 Authorization: `Bearer ${realtoken}`,
-                "Content-Type": "application/json",
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify(users),
         })
@@ -205,7 +200,7 @@ function Userfoodlist() {
                 if (data.success === true) {
                     alert(data.message);
                 } else {
-                    console.log("nothinf");
+                    console.log('nothinf');
                 }
             });
     }
@@ -244,7 +239,7 @@ function Userfoodlist() {
                                         Hello , {datas.name}
                                     </span>
                                 </button>
-                                <Link to={"/orders/" + datas.id}>
+                                <Link to={'/orders/' + datas.id}>
                                     <button className="res-btn-login">
                                         Orders
                                     </button>
@@ -255,7 +250,7 @@ function Userfoodlist() {
                                     className="res-btn-login"
                                 >
                                     Logout
-                                </button>{" "}
+                                </button>{' '}
                                 <hr style={border} />
                             </div>
                         </div>
@@ -267,7 +262,7 @@ function Userfoodlist() {
                             >
                                 X
                             </span>
-                            <Link to={"/orders/" + datas.id}>
+                            <Link to={'/orders/' + datas.id}>
                                 <button className="user-navbar-btn">
                                     Orders
                                 </button>
@@ -287,10 +282,10 @@ function Userfoodlist() {
                     Hello {datas.name}
                 </span>
                 <div className="navbar-btns">
-                    <Link to={"/orders/" + datas.id}>
+                    <Link to={'/orders/' + datas.id}>
                         <button className="user-navbar-btn">Orders</button>
                     </Link>
-                    <Link to={"/cart/" + datas.id}>
+                    <Link to={'/cart/' + datas.id}>
                         <button className="user-navbar-btn-2">Carts</button>
                     </Link>
                     <button onClick={logout} className="user-navbar-btn">
@@ -307,7 +302,7 @@ function Userfoodlist() {
                                 <div className="res-user-display" key={index}>
                                     <div className="res-user-display-side">
                                         <h1 className="userfood-res-title">
-                                            Welcome To , {data.restaurantname}{" "}
+                                            Welcome To , {data.restaurantname}{' '}
                                             restaurent <span>{datas.name}</span>
                                         </h1>
                                         <p>Address : {data.address}</p>
@@ -321,7 +316,7 @@ function Userfoodlist() {
                             <div>
                                 <img
                                     className="res-poster-url userfood-res-img"
-                                    src={`http://localhost:8000/restaurantuser/resImage/${data.posterurl}`}
+                                    src={`${baseURL}/restaurantuser/resImage/${data.posterurl}`}
                                     alt=""
                                 />
                             </div>
@@ -334,12 +329,12 @@ function Userfoodlist() {
             {/* function for to order  */}
             {orderaddstate === true ? (
                 <div className="res-update res-update-addres">
-                    <h2> Orderall your item </h2>+{" "}
+                    <h2> Orderall your item </h2>+{' '}
                     <div className="res-main-update">
-                        {readvalue("foodItem", orderid)}
-                        {readvalue("customer", datas.id)}
-                        {readvalue("restaurant", orderresid)}
-                        {readvalue("quantity", orderquantity)}
+                        {readvalue('foodItem', orderid)}
+                        {readvalue('customer', datas.id)}
+                        {readvalue('restaurant', orderresid)}
+                        {readvalue('quantity', orderquantity)}
                         <input
                             className="logininput3"
                             type="number"
@@ -347,7 +342,7 @@ function Userfoodlist() {
                             placeholder="add number"
                             defaultValue={useraddres.ordermobile}
                             onChange={(event) => {
-                                addresvalue("ordermobile", event.target.value);
+                                addresvalue('ordermobile', event.target.value);
                             }}
                         />
                         <input
@@ -357,7 +352,7 @@ function Userfoodlist() {
                             placeholder="add addres"
                             defaultValue={useraddres.addres}
                             onChange={(event) => {
-                                addresvalue("addres", event.target.value);
+                                addresvalue('addres', event.target.value);
                             }}
                         />
                     </div>
@@ -386,29 +381,29 @@ function Userfoodlist() {
                 <div className="res-update">
                     <h2> Add Quantity </h2>
                     <div className="res-main-update">
-                        {readvalue("foodItem", id)}
-                        {readvalue("customer", datas.id)}
-                        {readvalue("restaurant", resid)}
+                        {readvalue('foodItem', id)}
+                        {readvalue('customer', datas.id)}
+                        {readvalue('restaurant', resid)}
                         <div className="cart-quantity">
                             <button
                                 className="btn1"
                                 onClick={() =>
-                                    score > 1 ? setScore(score - 1) : ""
+                                    score > 1 ? setScore(score - 1) : ''
                                 }
                             >
                                 -
                             </button>
-                            {readvalue("quantity", score)}
+                            {readvalue('quantity', score)}
                             <h3>{score}</h3>
 
                             <button
                                 className="btn1"
                                 onClick={() =>
-                                    score < quantity ? setScore(score + 1) : ""
+                                    score < quantity ? setScore(score + 1) : ''
                                 }
                             >
-                                {" "}
-                                +{" "}
+                                {' '}
+                                +{' '}
                             </button>
                         </div>
                     </div>
@@ -440,7 +435,7 @@ function Userfoodlist() {
                             <div>
                                 <img
                                     className="poster"
-                                    src={`http://localhost:8000/restaurantuser/foodImage/${data.posterurl}`}
+                                    src={`${baseURL}/restaurantuser/foodImage/${data.posterurl}`}
                                     alt=""
                                 />
                             </div>
@@ -448,10 +443,10 @@ function Userfoodlist() {
                                 <div className="items-details user-order-details orders-items-details">
                                     <p>Name : {data.itemname}</p>
                                     <p>
-                                        {" "}
+                                        {' '}
                                         <span className="rupee">
                                             <FaRupeeSign />
-                                        </span>{" "}
+                                        </span>{' '}
                                         {data.price}
                                     </p>
                                 </div>
@@ -464,7 +459,7 @@ function Userfoodlist() {
                                         addstatetrue(
                                             data._id,
                                             data.quantity,
-                                            data.restaurant
+                                            data.restaurant,
                                         );
                                     }}
                                 >
@@ -474,7 +469,7 @@ function Userfoodlist() {
                                     onClick={() =>
                                         orderaddstatetrue(
                                             data._id,
-                                            data.restaurant
+                                            data.restaurant,
                                         )
                                     }
                                     className="add-btn-order"

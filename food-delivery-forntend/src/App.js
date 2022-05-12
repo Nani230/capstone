@@ -1,30 +1,31 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Registration from "./componentes/Registration";
-import Index from "./componentes/Index";
-import Foodlist from "./componentes/Foodlist";
-import Login from "./componentes/Login";
-import Main from "./componentes/Main";
-import Resindex from "./restarentcomponentes/Resindex";
-import "./css/App.css";
-import "./css/Mobile.css";
-import "./css/Mobiles.css";
-import "./css/Mobile4.css";
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Registration from './componentes/Registration';
+import Index from './componentes/Index';
+import Foodlist from './componentes/Foodlist';
+import Login from './componentes/Login';
+import Main from './componentes/Main';
+import Resindex from './restarentcomponentes/Resindex';
+import './css/App.css';
+import './css/Mobile.css';
+import './css/Mobiles.css';
+import './css/Mobile4.css';
 
-import "./css/Ipad.css";
-import "./css/Pad.css";
-import "./css/Pc.css";
-import "./css/Small.css";
-import Reslogin from "./restarentcomponentes/Reslogin";
-import Restaurentregister from "./restarentcomponentes/Restaurentregister";
-import Restaurantmain from "./restarentcomponentes/Restaurantmain";
-import Userfoodlist from "./componentes/Userfoodlist";
-import Cart from "./componentes/Cart";
-import Pastorders from "./componentes/Pastorders";
-import Resorders from "./restarentcomponentes/Resorders";
-function App() {
+import './css/Ipad.css';
+import './css/Pad.css';
+import './css/Pc.css';
+import './css/Small.css';
+import Reslogin from './restarentcomponentes/Reslogin';
+import Restaurentregister from './restarentcomponentes/Restaurentregister';
+import Restaurantmain from './restarentcomponentes/Restaurantmain';
+import Userfoodlist from './componentes/Userfoodlist';
+import Cart from './componentes/Cart';
+import Pastorders from './componentes/Pastorders';
+import Resorders from './restarentcomponentes/Resorders';
+
+export default function App() {
     // Route protection
     function RequireAuth({ children, redirectTo }) {
-        let isAuth = localStorage.getItem("details");
+        let isAuth = localStorage.getItem('details');
 
         if (isAuth != null) {
             console.log(isAuth);
@@ -36,15 +37,15 @@ function App() {
     }
 
     const RequireAuths = () => {
-        let user = localStorage.getItem("details");
+        let user = localStorage.getItem('details');
         if (user === null) {
             return <Index />;
         } else if (user !== null) {
             let userId = JSON.parse(user).id;
             let role = JSON.parse(user).role;
-            if (role === "user") {
+            if (role === 'user') {
                 return <Navigate to={`/main/${userId}`} />;
-            } else if (role === "restaurant") {
+            } else if (role === 'restaurant') {
                 return <Navigate to={`/resturenthome/${userId}`} />;
             }
         }
@@ -132,4 +133,4 @@ function App() {
     );
 }
 
-export default App;
+export const baseURL = 'https://food-ordering-api123.herokuapp.com';

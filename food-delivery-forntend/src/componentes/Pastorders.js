@@ -1,70 +1,71 @@
-import { useEffect, useRef, useState } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
-import { MdClose, MdCall, MdLocationOn } from "react-icons/md";
-import { FaFacebookF, FaInstagram } from "react-icons/fa";
-import { FaRupeeSign } from "react-icons/fa";
+import { baseURL } from '../App';
+import { useEffect, useRef, useState } from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import { MdClose, MdCall, MdLocationOn } from 'react-icons/md';
+import { FaFacebookF, FaInstagram } from 'react-icons/fa';
+import { FaRupeeSign } from 'react-icons/fa';
 
-import { GrMail } from "react-icons/gr";
+import { GrMail } from 'react-icons/gr';
 function Pastorders() {
     // useStates
     let [allitems, setitems] = useState([]);
     let prams = useRef(useParams());
     let [state, setstate] = useState(false);
-    let [status, setstatus] = useState("");
+    let [status, setstatus] = useState('');
     let [totalprice, setTotalPrice] = useState();
-    let datas = JSON.parse(localStorage.getItem("details"));
+    let datas = JSON.parse(localStorage.getItem('details'));
     let navigate = useNavigate();
     // logout function
     function logout() {
-        localStorage.removeItem("details");
-        navigate("/");
+        localStorage.removeItem('details');
+        navigate('/');
     }
     // internal css
     let style = {
-        width: "70%",
-        height: "100vh",
-        color: "#fff",
+        width: '70%',
+        height: '100vh',
+        color: '#fff',
         lineHeight: 10,
-        backgroundColor: "#fff",
-        marginLeft: "0px",
+        backgroundColor: '#fff',
+        marginLeft: '0px',
         // display: "none",
 
-        transition: "0.50s",
+        transition: '0.50s',
     };
     let styles = {
-        width: "50%",
-        height: "100vh",
-        color: "#fff",
+        width: '50%',
+        height: '100vh',
+        color: '#fff',
         lineHeight: 10,
-        padding: "1.5em",
-        backgroundColor: "#fff",
-        marginLeft: "-1400px",
-        transition: "0.50s",
+        padding: '1.5em',
+        backgroundColor: '#fff',
+        marginLeft: '-1400px',
+        transition: '0.50s',
     };
     let border = {
-        border: "1px solid #e1e1e1",
+        border: '1px solid #e1e1e1',
     };
     let green = {
-        color: "green",
-        marginTop: "45px",
-        width: "200px",
-        fontWeight: "bold",
+        color: 'green',
+        marginTop: '45px',
+        width: '200px',
+        fontWeight: 'bold',
     };
     let red = {
-        color: "red",
-        marginTop: "45px",
-        width: "200px",
-        fontWeight: "bold",
+        color: 'red',
+        marginTop: '45px',
+        width: '200px',
+        fontWeight: 'bold',
     };
     // useEffect to fech all orders of users
     useEffect(() => {
-        let token = JSON.parse(localStorage.getItem("details"));
+        let token = JSON.parse(localStorage.getItem('details'));
         let realtoken = token.token;
-        fetch(`http://localhost:8000/order/orders/${prams.current.id}`, {
-            method: "GET",
+        fetch(`${baseURL}/order/orders/${prams.current.id}`, {
+            method: 'GET',
             headers: {
                 Authorization: `Bearer ${realtoken}`,
-                "Content-Type": "application/json",
+                'Content-Type': 'application/json',
             },
         })
             .then((res) => res.json())
@@ -119,7 +120,7 @@ function Pastorders() {
                                         Hello , {datas.name}
                                     </span>
                                 </button>
-                                <Link to={"/orders/" + datas.id}>
+                                <Link to={'/orders/' + datas.id}>
                                     <button className="res-btn-login">
                                         Orders
                                     </button>
@@ -130,7 +131,7 @@ function Pastorders() {
                                     className="res-btn-login"
                                 >
                                     Logout
-                                </button>{" "}
+                                </button>{' '}
                                 <hr style={border} />
                             </div>
                         </div>
@@ -142,7 +143,7 @@ function Pastorders() {
                             >
                                 X
                             </span>
-                            <Link to={"/orders/" + datas.id}>
+                            <Link to={'/orders/' + datas.id}>
                                 <button className="user-navbar-btn">
                                     Orders
                                 </button>
@@ -160,7 +161,7 @@ function Pastorders() {
                     Hello {datas.name}
                 </span>
                 <div className="navbar-btns">
-                    <Link to={"/cart/" + datas.id}>
+                    <Link to={'/cart/' + datas.id}>
                         <button className="user-navbar-btn-2">Carts</button>
                     </Link>
                     <button onClick={logout} className="user-navbar-btn">
@@ -178,7 +179,7 @@ function Pastorders() {
                                 <div>
                                     <img
                                         className="poster cart-poster"
-                                        src={`http://localhost:8000/restaurantuser/foodImage/${data.foodItem.posterurl}`}
+                                        src={`${baseURL}/restaurantuser/foodImage/${data.foodItem.posterurl}`}
                                         alt=""
                                     />
                                 </div>
@@ -189,10 +190,10 @@ function Pastorders() {
                                                 Name : {data.foodItem.itemname}
                                             </p>
                                             <p>
-                                                {" "}
+                                                {' '}
                                                 <span>
                                                     <FaRupeeSign />
-                                                </span>{" "}
+                                                </span>{' '}
                                                 {data.foodItem.price}
                                             </p>
                                         </div>
@@ -200,7 +201,7 @@ function Pastorders() {
                                     <p className="item-quan">
                                         Quantity : {data.quantity}
                                     </p>
-                                    {data.orderStatus === "Accepted" ? (
+                                    {data.orderStatus === 'Accepted' ? (
                                         <p
                                             className="orderstatus"
                                             style={green}
@@ -211,7 +212,7 @@ function Pastorders() {
                                             {data.orderStatus}
                                         </p>
                                     ) : null}
-                                    {data.orderStatus === "Rejected" ? (
+                                    {data.orderStatus === 'Rejected' ? (
                                         <p className="orderstatus" style={red}>
                                             <span className="order-status">
                                                 Status :
@@ -219,9 +220,9 @@ function Pastorders() {
                                             {data.orderStatus}
                                         </p>
                                     ) : null}
-                                    {data.orderStatus === "pending" ? (
+                                    {data.orderStatus === 'pending' ? (
                                         <p
-                                            style={{ width: "200px" }}
+                                            style={{ width: '200px' }}
                                             className="orderstatus pending"
                                         >
                                             <span className="order-status">
@@ -238,7 +239,7 @@ function Pastorders() {
 
                 {/* display totalprice */}
                 {allitems.length != 0 ? null : (
-                    <Link to={"/main/" + datas.id}>
+                    <Link to={'/main/' + datas.id}>
                         <button className="explore-btn">
                             Explore Food items
                         </button>

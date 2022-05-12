@@ -1,29 +1,30 @@
-import { useEffect, useRef, useState } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
-import { FaTrash } from "react-icons/fa";
-import { FaRupeeSign } from "react-icons/fa";
-import { MdClose, MdCall, MdLocationOn } from "react-icons/md";
-import { FaFacebookF, FaInstagram } from "react-icons/fa";
-import { GrMail } from "react-icons/gr";
+import { baseURL } from '../App';
+import { useEffect, useRef, useState } from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import { FaTrash } from 'react-icons/fa';
+import { FaRupeeSign } from 'react-icons/fa';
+import { MdClose, MdCall, MdLocationOn } from 'react-icons/md';
+import { FaFacebookF, FaInstagram } from 'react-icons/fa';
+import { GrMail } from 'react-icons/gr';
 function Resorders() {
     // useStates
-    let [accept, setaccept] = useState("Accept Order");
+    let [accept, setaccept] = useState('Accept Order');
     let [allitems, setitems] = useState([]);
     let [state, setsate] = useState(false);
     let [stat, setsates] = useState(false);
-    let [message, setmessage] = useState("");
+    let [message, setmessage] = useState('');
     let [box, setbox] = useState(false);
-    let [dataid, setid] = useState("null");
+    let [dataid, setid] = useState('null');
     let [states, setstates] = useState(false);
     let [hotel, sethotal] = useState([]);
     // localStorage
-    let data = JSON.parse(localStorage.getItem("details"));
+    let data = JSON.parse(localStorage.getItem('details'));
     // navigate from on to another
     let navigate = useNavigate();
     // logout function
     function logout() {
-        localStorage.removeItem("details");
-        navigate("/resturentindex");
+        localStorage.removeItem('details');
+        navigate('/resturentindex');
     }
     // useParams
     let prams = useRef(useParams());
@@ -31,13 +32,13 @@ function Resorders() {
     let statusid = [];
     // useEffect to fech all orders and restarent
     useEffect(() => {
-        let token = JSON.parse(localStorage.getItem("details"));
+        let token = JSON.parse(localStorage.getItem('details'));
         let realtoken = token.token;
-        fetch(`http://localhost:8000/order/resorders/${prams.current.id}`, {
-            method: "GET",
+        fetch(`${baseURL}/order/resorders/${prams.current.id}`, {
+            method: 'GET',
             headers: {
                 Authorization: `Bearer ${realtoken}`,
-                "Content-Type": "application/json",
+                'Content-Type': 'application/json',
             },
         })
             .then((res) => res.json())
@@ -45,12 +46,9 @@ function Resorders() {
                 console.log(data);
                 setitems(data.data);
             });
-        fetch(
-            `http://localhost:8000/restaurantuser/allresturent/${prams.current.id}`,
-            {
-                method: "GET",
-            }
-        )
+        fetch(`${baseURL}/restaurantuser/allresturent/${prams.current.id}`, {
+            method: 'GET',
+        })
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
@@ -66,27 +64,27 @@ function Resorders() {
     function statetrue(id) {
         setsate(true);
         setid(id);
-        setaccept("Order Accepted");
-        readvalue("orderStatus", "Accepted");
-        readvalue("AcceptStatus", "Order Accepted");
-        readvalue("rejectStatus", "Reject Order");
+        setaccept('Order Accepted');
+        readvalue('orderStatus', 'Accepted');
+        readvalue('AcceptStatus', 'Order Accepted');
+        readvalue('rejectStatus', 'Reject Order');
 
         console.log(id);
     }
     function addstatetrue(id) {
         setsate(true);
         setid(id);
-        setaccept("Order Accepted");
-        readvalue("orderStatus", "Rejected");
-        readvalue("rejectStatus", "Order Rejected");
+        setaccept('Order Accepted');
+        readvalue('orderStatus', 'Rejected');
+        readvalue('rejectStatus', 'Order Rejected');
         console.log(id);
     }
     function datastatetrue(id) {
         setsates(true);
         setid(id);
-        readvalue("orderStatus", "Rejected");
-        readvalue("rejectStatus", "Order Rejected");
-        readvalue("AcceptStatus", "Accept Order");
+        readvalue('orderStatus', 'Rejected');
+        readvalue('rejectStatus', 'Order Rejected');
+        readvalue('AcceptStatus', 'Accept Order');
     }
     function statefalse() {
         setsate(false);
@@ -99,41 +97,41 @@ function Resorders() {
     }
     // internal css
     let style = {
-        width: "70%",
-        height: "100vh",
-        color: "#fff",
+        width: '70%',
+        height: '100vh',
+        color: '#fff',
         lineHeight: 10,
-        backgroundColor: "#fff",
-        marginLeft: "0px",
+        backgroundColor: '#fff',
+        marginLeft: '0px',
         // display: "none",
 
-        transition: "0.50s",
+        transition: '0.50s',
     };
     let styles = {
-        width: "50%",
-        height: "100vh",
-        color: "#fff",
+        width: '50%',
+        height: '100vh',
+        color: '#fff',
         lineHeight: 10,
-        padding: "1.5em",
-        backgroundColor: "#fff",
-        marginLeft: "-1400px",
-        transition: "0.50s",
+        padding: '1.5em',
+        backgroundColor: '#fff',
+        marginLeft: '-1400px',
+        transition: '0.50s',
     };
     let border = {
-        border: "1px solid #e1e1e1",
+        border: '1px solid #e1e1e1',
     };
     console.log(users);
     // function to change orderStatus
     function changestatus() {
-        let token = JSON.parse(localStorage.getItem("details"));
+        let token = JSON.parse(localStorage.getItem('details'));
         let realtoken = token.token;
         console.log(users);
 
-        fetch("http://localhost:8000/order/changeStatus/" + dataid, {
-            method: "PUT",
+        fetch(`${baseURL}/order/changeStatus/` + dataid, {
+            method: 'PUT',
             headers: {
                 Authorization: `Bearer ${realtoken}`,
-                "Content-Type": "application/json",
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify(users),
         })
@@ -146,7 +144,7 @@ function Resorders() {
                         setbox(false);
                     }, 1500);
                 } else {
-                    console.log("nothinf");
+                    console.log('nothinf');
                 }
             })
             .catch((err) => console.log(err));
@@ -179,7 +177,7 @@ function Resorders() {
                     {states === true ? (
                         <div className="slider" style={style}>
                             <div className="resindex-btns">
-                                <Link to={"/resturentregister"}>
+                                <Link to={'/resturentregister'}>
                                     <button
                                         onClick={logout}
                                         className="res-btn-signup"
@@ -228,7 +226,7 @@ function Resorders() {
                                 <div>
                                     <img
                                         className="poster cart-poster"
-                                        src={`http://localhost:8000/restaurantuser/foodImage/${data.foodItem.posterurl}`}
+                                        src={`${baseURL}/restaurantuser/foodImage/${data.foodItem.posterurl}`}
                                         alt=""
                                     />
                                 </div>
@@ -239,10 +237,10 @@ function Resorders() {
                                                 Name : {data.foodItem.itemname}
                                             </p>
                                             <p>
-                                                {" "}
+                                                {' '}
                                                 <span>
                                                     <FaRupeeSign />
-                                                </span>{" "}
+                                                </span>{' '}
                                                 {data.foodItem.price}
                                             </p>
                                         </div>
@@ -265,7 +263,7 @@ function Resorders() {
                                                         <button
                                                             onClick={() => {
                                                                 datastatetrue(
-                                                                    data._id
+                                                                    data._id,
                                                                 );
 
                                                                 changestatus();
@@ -310,7 +308,7 @@ function Resorders() {
                                                         <button
                                                             onClick={() => {
                                                                 statetrue(
-                                                                    data._id
+                                                                    data._id,
                                                                 );
 
                                                                 changestatus();
@@ -359,7 +357,7 @@ function Resorders() {
                                                     }}
                                                     className="trash"
                                                 >
-                                                    {data.rejectStatus}{" "}
+                                                    {data.rejectStatus}{' '}
                                                 </span>
                                             </div>
                                         )}

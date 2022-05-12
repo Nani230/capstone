@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { baseURL } from '../App';
+import { Link } from 'react-router-dom';
 
 function Restaurentregister() {
     // collecting data from user
@@ -13,11 +14,11 @@ function Restaurentregister() {
     }
     // function to register restarent
     function register() {
-        console.log(" fine!");
-        console.log(users.get("image"));
+        console.log(' fine!');
+        console.log(users.get('image'));
 
-        fetch(`http://localhost:8000/restaurantuser/register`, {
-            method: "POST",
+        fetch(`${baseURL}/restaurantuser/register`, {
+            method: 'POST',
             headers: {
                 // Authorization: `Bearer ${realtoken}`,
             },
@@ -43,7 +44,7 @@ function Restaurentregister() {
                             type="text"
                             placeholder="Enter restaurent name"
                             onChange={(event) => {
-                                readvalue("restaurantname", event.target.value);
+                                readvalue('restaurantname', event.target.value);
                             }}
                         />
                         <input
@@ -51,7 +52,7 @@ function Restaurentregister() {
                             type="text"
                             placeholder="Enter address"
                             onChange={(event) => {
-                                readvalue("address", event.target.value);
+                                readvalue('address', event.target.value);
                             }}
                         />
                         <input
@@ -59,7 +60,7 @@ function Restaurentregister() {
                             type="time"
                             placeholder="User Enter open time"
                             onChange={(event) => {
-                                readvalue("opentime", event.target.value);
+                                readvalue('opentime', event.target.value);
                             }}
                         />
                         <input
@@ -67,7 +68,7 @@ function Restaurentregister() {
                             type="time"
                             placeholder="Enter colse time"
                             onChange={(event) => {
-                                readvalue("closetime", event.target.value);
+                                readvalue('closetime', event.target.value);
                             }}
                         />
                         <input
@@ -75,7 +76,7 @@ function Restaurentregister() {
                             type="text"
                             placeholder="User name"
                             onChange={(event) => {
-                                readvalue("username", event.target.value);
+                                readvalue('username', event.target.value);
                             }}
                         />
                         <input
@@ -83,7 +84,7 @@ function Restaurentregister() {
                             type="email"
                             placeholder="Enter email"
                             onChange={(event) => {
-                                readvalue("email", event.target.value);
+                                readvalue('email', event.target.value);
                             }}
                         />
                         <input
@@ -91,7 +92,7 @@ function Restaurentregister() {
                             type="number"
                             placeholder=" Enter mobile number"
                             onChange={(event) => {
-                                readvalue("mobile", event.target.value);
+                                readvalue('mobile', event.target.value);
                             }}
                         />
                         <input
@@ -99,7 +100,7 @@ function Restaurentregister() {
                             type="password"
                             placeholder="Enter password"
                             onChange={(event) => {
-                                readvalue("password", event.target.value);
+                                readvalue('password', event.target.value);
                             }}
                         />
                         <input
@@ -107,7 +108,7 @@ function Restaurentregister() {
                             type="file"
                             placeholder="Add img url"
                             onChange={(event) => {
-                                readvalue("image", event.target.files[0]);
+                                readvalue('image', event.target.files[0]);
                             }}
                             name="image"
                         />
@@ -120,7 +121,7 @@ function Restaurentregister() {
                         >
                             Register
                         </button>
-                        <Link to={"/resturentlogin"}>
+                        <Link to={'/resturentlogin'}>
                             <button className="reg-sign-btn"> Login</button>
                         </Link>
                     </div>
