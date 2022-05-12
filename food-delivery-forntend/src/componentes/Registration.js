@@ -108,7 +108,7 @@ function Registration() {
                             <div className="reg-btns">
                                 <button
                                     onClick={register}
-                                    className="reg-signup-btn regs-signup-btn"
+                                    className="reg-signup-btn reg-signup2 regs-signup-btn"
                                 >
                                     Signup
                                 </button>

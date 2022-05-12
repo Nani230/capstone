@@ -5,45 +5,60 @@ const restarentverifytoken = require("../middlewear/restarentverify");
 const orderModel = require("../modals/ordermodal");
 const foodModel = require("../modals/fooditems");
 const restaurant = require("../middlewear/Restarurent");
+const usermodal = require("../modals/usersmodal");
 
 const router = express.Router();
 
 // add item to order
-router.post("/create", verifytoken, (req, res) => {
-    let orderData = req.body;
-    console.log(orderData);
+router.post("/create/:id", verifytoken, (req, res) => {
+    let _id = req.params.id;
+    let body = req.body;
+    console.log(_id);
 
-    foodModel
-        .findOne({ _id: orderData.foodItem })
-        .then((data) => {
-            console.log(data);
+    usermodal
+        .findOne({ _id })
+        .then((data1) => {
+            foodModel
+                .findOne({ _id: body.foodItem })
+                .then((data) => {
+                    console.log(data);
 
-            if (data.quantity > 0) {
-                const orders = new orderModel(orderData);
-                orders
-                    .save()
-                    .then(() => {
-                        console.log(data.quantity);
-                        res.status(200).send({
-                            message: "Ordered!!!",
-                            success: true,
-                        });
-                    })
-                    .catch((err) => {
-                        console.log(err);
+                    if (data.quantity > 0) {
+                        let orderData = {
+                            ordermobile: data1.ordermobile,
+                            addres: data1.addres,
+                            customer: body.customer,
+                            foodItem: body.foodItem,
+                            restaurant: body.restaurant,
+                            quantity: body.quantity,
+                        };
+                        const orders = new orderModel(orderData);
+                        orders
+                            .save()
+                            .then(() => {
+                                console.log(data.quantity);
+                                res.status(200).send({
+                                    message: "Ordered!!!",
+                                    success: true,
+                                });
+                            })
+                            .catch((err) => {
+                                console.log(err);
+                                res.status(400).send({
+                                    message: "Order rejected",
+                                    success: false,
+                                });
+                            });
+                    } else {
                         res.status(400).send({
-                            message: "Order rejected",
-                            success: false,
+                            message: "Order rejected, Out of Stock",
+                            status: false,
                         });
-                    });
-            } else {
-                res.status(400).send({
-                    message: "Order rejected, Out of Stock",
-                    status: false,
-                });
-            }
+                    }
+                })
+                .catch((err) => console.log(err));
         })
-        .catch((err) => console.log(err));
+        .catch((err) => res.send(err));
 });
 // get user order items
 router.get("/orders/:id", verifytoken, (req, res) => {
@@ -53,6 +68,7 @@ router.get("/orders/:id", verifytoken, (req, res) => {
     orderModel
         .find()
         .populate("foodItem")
+
         .then((data) => {
             let allitems = [];
 
@@ -81,6 +97,8 @@ router.get("/resorders/:id", restarentverifytoken, restaurant, (req, res) => {
     orderModel
         .find()
         .populate("foodItem")
+        .populate("customer")
+
         .then((data) => {
             let allitems = [];
 

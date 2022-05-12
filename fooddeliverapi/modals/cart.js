@@ -10,7 +10,7 @@ const cartSchema = new mongoose.Schema(
         },
         customer: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "user",
+            ref: "users",
             required: true,
         },
         restaurant: {

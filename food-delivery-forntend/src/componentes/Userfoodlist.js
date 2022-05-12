@@ -18,6 +18,7 @@ function Userfoodlist() {
     let [orderresid, orderressetid] = useState("nothing");
     let [allitems, setitems] = useState([]);
     let [hotel, sethotal] = useState([]);
+    let [useraddres, setuseraddres] = useState([]);
     let [score, setScore] = useState(1);
     let [quantity, setquantity] = useState(1);
     let [orderquantity, ordersetquantity] = useState(1);
@@ -87,7 +88,9 @@ function Userfoodlist() {
     }
     //    this is useEffect to fech restaurent  and items
     useEffect(() => {
-        let token = JSON.parse(localStorage.getItem("resdetails"));
+        let token = JSON.parse(localStorage.getItem("details"));
+        let realtoken = token.token;
+
         fetch(
             `http://localhost:8000/restaurantuser/allresturent/${prams.current.id}`,
             {
@@ -111,6 +114,18 @@ function Userfoodlist() {
                 console.log(data);
                 setitems(data);
             });
+        fetch("http://localhost:8000/cart/addres/" + datas.id, {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${realtoken}`,
+            },
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                setuseraddres(data);
+            })
+            .catch((err) => console.log(err));
     }, []);
     // this is for to collect data
     let users = {};
@@ -120,6 +135,29 @@ function Userfoodlist() {
     // function to refreshPage
     function refreshPage() {
         window.location.reload(false);
+    }
+    //  this for geting addres from user
+    let addresuser = {};
+    function addresvalue(pro, value) {
+        addresuser[pro] = value;
+    }
+    // this for order
+
+    function addres() {
+        let token = JSON.parse(localStorage.getItem("details"));
+        let realtoken = token.token;
+        fetch(`http://localhost:8000/cart/addres/${datas.id}`, {
+            method: "put",
+            headers: {
+                Authorization: `Bearer ${realtoken}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(addresuser),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+            });
     }
 
     // this function is to add items in cart
@@ -150,11 +188,10 @@ function Userfoodlist() {
             });
     }
     // this function is for to order items
-    function order(data) {
-        console.log(data);
+    function order() {
         let token = JSON.parse(localStorage.getItem("details"));
         let realtoken = token.token;
-        fetch(`http://localhost:8000/order/create`, {
+        fetch(`http://localhost:8000/order/create/${datas.id}`, {
             method: "POST",
             headers: {
                 Authorization: `Bearer ${realtoken}`,
@@ -166,16 +203,13 @@ function Userfoodlist() {
             .then((data) => {
                 console.log(data);
                 if (data.success === true) {
-                    setmessage(data.message);
-                    setbox(true);
-                    setTimeout(() => {
-                        setbox(false);
-                    }, 1500);
+                    alert(data.message);
                 } else {
                     console.log("nothinf");
                 }
             });
     }
+    console.log(users);
 
     return (
         <div className="food-main">
@@ -205,6 +239,11 @@ function Userfoodlist() {
                     {state === true ? (
                         <div className="slider" style={style}>
                             <div className="resindex-btns">
+                                <button className="res-btn-login">
+                                    <span className="main-title-name">
+                                        Hello , {datas.name}
+                                    </span>
+                                </button>
                                 <Link to={"/orders/" + datas.id}>
                                     <button className="res-btn-login">
                                         Orders
@@ -244,7 +283,9 @@ function Userfoodlist() {
                 </div>
 
                 {/* this is normal pc navbar */}
-                <span className="main-title-name">Hello {datas.name}</span>
+                <span className="main-title-name mains-title-name">
+                    Hello {datas.name}
+                </span>
                 <div className="navbar-btns">
                     <Link to={"/orders/" + datas.id}>
                         <button className="user-navbar-btn">Orders</button>
@@ -292,13 +333,33 @@ function Userfoodlist() {
 
             {/* function for to order  */}
             {orderaddstate === true ? (
-                <div className="res-update">
-                    <h2> Order your item </h2>
+                <div className="res-update res-update-addres">
+                    <h2> Orderall your item </h2>+{" "}
                     <div className="res-main-update">
                         {readvalue("foodItem", orderid)}
                         {readvalue("customer", datas.id)}
                         {readvalue("restaurant", orderresid)}
                         {readvalue("quantity", orderquantity)}
+                        <input
+                            className="logininput3"
+                            type="number"
+                            // defaultValue={datas.itemname}
+                            placeholder="add number"
+                            defaultValue={useraddres.ordermobile}
+                            onChange={(event) => {
+                                addresvalue("ordermobile", event.target.value);
+                            }}
+                        />
+                        <input
+                            className="logininput3"
+                            // defaultValue={datas.price}
+                            type="text"
+                            placeholder="add addres"
+                            defaultValue={useraddres.addres}
+                            onChange={(event) => {
+                                addresvalue("addres", event.target.value);
+                            }}
+                        />
                     </div>
                     <div className="reg-btns">
                         <button
@@ -308,7 +369,11 @@ function Userfoodlist() {
                             cancel
                         </button>
                         <button
-                            onClick={order}
+                            onClick={() => {
+                                addres();
+                                order();
+                                refreshPage();
+                            }}
                             className="reg-signup-btn update-sub-btn"
                         >
                             Order now
@@ -380,7 +445,7 @@ function Userfoodlist() {
                                 />
                             </div>
                             <div className="item-container">
-                                <div className="items-details">
+                                <div className="items-details user-order-details orders-items-details">
                                     <p>Name : {data.itemname}</p>
                                     <p>
                                         {" "}

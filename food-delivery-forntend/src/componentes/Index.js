@@ -177,7 +177,7 @@ function Index() {
                             <div className="hotal-main" key={index}>
                                 <div>
                                     <img
-                                        className="poster"
+                                        className="poster mobile-poster "
                                         src={`http://localhost:8000/restaurantuser/resImage/${data.posterurl}`}
                                         alt=""
                                     />

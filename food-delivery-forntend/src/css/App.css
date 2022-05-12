@@ -308,10 +308,30 @@
     width: 1000px;
     height: 150px;
     margin-top: 30px;
+}
+.cart-box3 {
+    width: 1000px;
+    height: 150px;
+    margin-top: 30px;
+}
+.user-addres {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin-left: 25px;
+}
+.cart-box2 {
     display: flex;
     justify-content: space-between;
 }
-
+.all-orders-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 10px !important;
+}
+.orderstatus {
+    width: 300px;
+}
 .poster {
     width: 330px;
     height: 250px;
@@ -332,8 +352,8 @@
 
 .item-container {
     display: flex;
-    justify-content: center;
-    width: 100%;
+    justify-content: space-between;
+    width: 400px;
 }
 .items-details {
     display: flex;
@@ -342,6 +362,18 @@
     margin-right: 20px;
     font-weight: bold;
 }
+.res-items-details {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+.user-order-details > p {
+    margin-top: 10px !important;
+}
+
 .orders-items-details {
     display: flex;
     justify-content: space-between;
@@ -351,6 +383,7 @@
 }
 .orders-items-details > p {
     margin-top: 45px;
+    margin-left: 25px;
 }
 .orderbtns {
     display: flex;
@@ -373,14 +406,14 @@
 .item-des {
     width: 50%;
     margin-left: 25px;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     color: rgb(105, 105, 105);
 }
 .rupee {
     margin-top: 20px;
 }
 .item-quan {
-    width: 50%;
+    width: 150px !important;
     margin-left: 23px;
     padding-bottom: 20px;
     color: rgb(105, 105, 105);
@@ -394,6 +427,13 @@
     justify-content: space-between;
     padding-right: 100px;
     padding-left: 100px;
+}
+.res-order-food-main-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column-reverse !important;
+    align-items: center;
+    justify-content: space-between;
 }
 .cart-food-main-container {
     display: flex;
@@ -854,6 +894,19 @@
     width: 500px;
     border: 3px solid #c8bcbc;
     height: 200px;
+    border-radius: 20px;
+    z-index: 10;
+    margin-top: 20px;
+    bottom: 200px;
+    position: fixed;
+    left: 32%;
+    top: 0%;
+    background-color: #fff;
+}
+.res-update-addres {
+    width: 500px;
+    border: 3px solid #c8bcbc;
+    height: 300px;
     border-radius: 20px;
     z-index: 10;
     margin-top: 20px;
@@ -1425,6 +1478,19 @@
     margin-bottom: 5px;
     width: 90%;
     margin-top: 0px !important;
+    display: flex;
+    justify-content: space-between;
+}
+.cart-pens {
+    margin-left: 5px;
+    color: green;
+}
+.past-order-font-icon {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+    width: 200px;
+    margin-top: 50px !important;
     display: flex;
     justify-content: space-between;
 }

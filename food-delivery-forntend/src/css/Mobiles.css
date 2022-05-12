@@ -314,11 +314,27 @@
     /* css for global allorders */
     .cart-box {
         width: 250px;
-        height: 270px !important;
+        height: 220px !important;
+
         display: flex;
         margin-top: 50px !important;
         flex-direction: column;
     }
+    .cart-box2 {
+        display: block !important;
+    }
+    .user-addres {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 250px !important;
+        font-size: 12px;
+        font-weight: bold;
+    }
+    .user-addres > P {
+        margin: 0px !important;
+    }
+
     .cart-quantits {
         margin-top: 0px !important;
         margin-left: 23px !important;
@@ -412,13 +428,13 @@
         margin-top: 0px !important;
     }
     .order-font-icons {
-        width: 90% !important;
+        width: 220px !important;
         font-size: 10px !important;
         margin: 0px !important;
         margin-top: 0px !important;
         margin-bottom: 10px !important;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
     }
     .cart-quantity {
         margin-top: 0px;

@@ -95,7 +95,7 @@ function Login() {
                                 </Link>
                                 <button
                                     onClick={loginuser}
-                                    className="reg-signup-btn"
+                                    className="reg-signup-btn reg-signup2"
                                 >
                                     Login
                                 </button>

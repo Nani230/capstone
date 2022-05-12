@@ -220,57 +220,64 @@ function Resorders() {
             </div>
             <h1 className="foo-title">All Your Orders </h1>
             {/* displaying all orders */}
-            <div className="food-main-container">
+            <div className="food-main-container res-order-food-main-container">
                 {allitems.map((data, index) => {
                     return (
-                        <div className="hotal-main cart-box" key={index}>
-                            <div>
-                                <img
-                                    className="poster cart-poster"
-                                    src={`http://localhost:8000/restaurantuser/foodImage/${data.foodItem.posterurl}`}
-                                    alt=""
-                                />
-                            </div>
-                            <div className="item-container">
-                                <div className="items-details orders-items-details">
-                                    <p>Name : {data.foodItem.itemname}</p>
-                                    <p>
-                                        {" "}
-                                        <span>
-                                            <FaRupeeSign />
-                                        </span>{" "}
-                                        {data.foodItem.price}
-                                    </p>
+                        <div className="hotal-main cart-box3" key={index}>
+                            <div className="cart-box2">
+                                <div>
+                                    <img
+                                        className="poster cart-poster"
+                                        src={`http://localhost:8000/restaurantuser/foodImage/${data.foodItem.posterurl}`}
+                                        alt=""
+                                    />
                                 </div>
-                            </div>
-                            <p className="item-quan">
-                                Quantity : {data.quantity}
-                            </p>
-                            <div>
-                                {stat === true ? (
-                                    <div className="font-icons">
-                                        <div className="restarent-update">
-                                            <div className="reg-btns">
-                                                <button
-                                                    onClick={statefalse}
-                                                    className="reg-sign-btn updata-cancel-btn"
-                                                >
-                                                    cancel
-                                                </button>
-                                                <button
-                                                    onClick={() => {
-                                                        datastatetrue(data._id);
-
-                                                        changestatus();
-                                                        refreshPage();
-                                                    }}
-                                                    className="reg-signup-btn update-sub-btn"
-                                                >
-                                                    Reject order
-                                                </button>
-                                            </div>
+                                <div className="all-orders-container">
+                                    <div className="item-container">
+                                        <div className="items-details orders-items-details">
+                                            <p>
+                                                Name : {data.foodItem.itemname}
+                                            </p>
+                                            <p>
+                                                {" "}
+                                                <span>
+                                                    <FaRupeeSign />
+                                                </span>{" "}
+                                                {data.foodItem.price}
+                                            </p>
                                         </div>
-                                        {/* <span
+                                    </div>
+                                    <p className="item-quan">
+                                        Quantity : {data.quantity}
+                                    </p>
+
+                                    <div>
+                                        {stat === true ? (
+                                            <div className="font-icons">
+                                                <div className="res-update">
+                                                    <div className="reg-btns">
+                                                        <button
+                                                            onClick={statefalse}
+                                                            className="reg-sign-btn updata-cancel-btn"
+                                                        >
+                                                            cancel
+                                                        </button>
+                                                        <button
+                                                            onClick={() => {
+                                                                datastatetrue(
+                                                                    data._id
+                                                                );
+
+                                                                changestatus();
+                                                                refreshPage();
+                                                            }}
+                                                            className="reg-signup-btn update-sub-btn"
+                                                        >
+                                                            Reject order
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                {/* <span
                                             onClick={() => {
                                                 statetrue(data._id);
                                                 changestatus();
@@ -279,7 +286,7 @@ function Resorders() {
                                         >
                                             Order Accepted
                                         </span> */}
-                                        {/* <span
+                                                {/* <span
                                             onClick={() => {
                                                 datastatetrue(data._id);
                                                 changestatus();
@@ -288,72 +295,82 @@ function Resorders() {
                                         >
                                             Reject order
                                         </span> */}
-                                    </div>
-                                ) : null}
-                                {state === true ? (
-                                    <div className="font-icons">
-                                        <div className="res-update">
-                                            <div className="reg-btns">
-                                                <button
-                                                    onClick={statefalse}
-                                                    className="reg-sign-btn updata-cancel-btn"
-                                                >
-                                                    cancel
-                                                </button>
-                                                <button
+                                            </div>
+                                        ) : null}
+                                        {state === true ? (
+                                            <div className="font-icons">
+                                                <div className="res-update">
+                                                    <div className="reg-btns">
+                                                        <button
+                                                            onClick={statefalse}
+                                                            className="reg-sign-btn updata-cancel-btn"
+                                                        >
+                                                            cancel
+                                                        </button>
+                                                        <button
+                                                            onClick={() => {
+                                                                statetrue(
+                                                                    data._id
+                                                                );
+
+                                                                changestatus();
+                                                                refreshPage();
+                                                            }}
+                                                            className="reg-signup-btn update-sub-btn"
+                                                        >
+                                                            Accept order
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                {/* <span
+                                            onClick={() => {
+                                                statetrue(data._id);
+                                                changestatus();
+                                            }}
+                                            className="pen"
+                                        >
+                                            Order Accepted
+                                        </span> */}
+                                                {/* <span
+                                            onClick={() => {
+                                                datastatetrue(data._id);
+                                                changestatus();
+                                            }}
+                                            className="trash"
+                                        >
+                                            Reject order
+                                        </span> */}
+                                            </div>
+                                        ) : (
+                                            <div className="order-font-icons">
+                                                <span
                                                     onClick={() => {
                                                         statetrue(data._id);
-
-                                                        changestatus();
-                                                        refreshPage();
+                                                        // changestatus();
                                                     }}
-                                                    className="reg-signup-btn update-sub-btn"
+                                                    className="pen"
                                                 >
-                                                    Accept order
-                                                </button>
+                                                    {data.AcceptStatus}
+                                                </span>
+                                                <span
+                                                    onClick={() => {
+                                                        datastatetrue(data._id);
+                                                        // changestatus();
+                                                    }}
+                                                    className="trash"
+                                                >
+                                                    {data.rejectStatus}{" "}
+                                                </span>
                                             </div>
-                                        </div>
-                                        {/* <span
-                                            onClick={() => {
-                                                statetrue(data._id);
-                                                changestatus();
-                                            }}
-                                            className="pen"
-                                        >
-                                            Order Accepted
-                                        </span> */}
-                                        {/* <span
-                                            onClick={() => {
-                                                datastatetrue(data._id);
-                                                changestatus();
-                                            }}
-                                            className="trash"
-                                        >
-                                            Reject order
-                                        </span> */}
+                                        )}
                                     </div>
-                                ) : (
-                                    <div className="order-font-icons">
-                                        <span
-                                            onClick={() => {
-                                                statetrue(data._id);
-                                                changestatus();
-                                            }}
-                                            className="pen"
-                                        >
-                                            {data.AcceptStatus}
-                                        </span>
-                                        <span
-                                            onClick={() => {
-                                                datastatetrue(data._id);
-                                                changestatus();
-                                            }}
-                                            className="trash"
-                                        >
-                                            {data.rejectStatus}{" "}
-                                        </span>
+                                    <div className="user-addres">
+                                        <p>
+                                            Mobile : {data.customer.ordermobile}
+                                        </p>
+                                        <p>Addres : {data.customer.addres}</p>
                                     </div>
-                                )}
+                                </div>
                             </div>
                         </div>
                     );

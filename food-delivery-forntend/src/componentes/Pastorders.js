@@ -47,13 +47,13 @@ function Pastorders() {
     let green = {
         color: "green",
         marginTop: "45px",
-        width: "500px",
+        width: "200px",
         fontWeight: "bold",
     };
     let red = {
         color: "red",
         marginTop: "45px",
-        width: "500px",
+        width: "200px",
         fontWeight: "bold",
     };
     // useEffect to fech all orders of users
@@ -114,6 +114,11 @@ function Pastorders() {
                     {state === true ? (
                         <div className="slider" style={style}>
                             <div className="resindex-btns">
+                                <button className="res-btn-login">
+                                    <span className="main-title-name">
+                                        Hello , {datas.name}
+                                    </span>
+                                </button>
                                 <Link to={"/orders/" + datas.id}>
                                     <button className="res-btn-login">
                                         Orders
@@ -151,7 +156,9 @@ function Pastorders() {
                         </div>
                     )}
                 </div>
-                <span className="main-title-name">Hello {datas.name}</span>
+                <span className="main-title-name mains-title-name">
+                    Hello {datas.name}
+                </span>
                 <div className="navbar-btns">
                     <Link to={"/cart/" + datas.id}>
                         <button className="user-navbar-btn-2">Carts</button>
@@ -163,88 +170,74 @@ function Pastorders() {
             </div>
             <h1 className="foo-title">All Your Orders </h1>
             {/* displaying all orders */}
-            <div className="cart-food-main-container">
+            <div className="food-main-container">
                 {allitems.map((data, index) => {
                     return (
                         <div className="hotal-main cart-box" key={index}>
-                            <div>
-                                <img
-                                    className="poster cart-poster"
-                                    src={`http://localhost:8000/restaurantuser/foodImage/${data.foodItem.posterurl}`}
-                                    alt=""
-                                />
-                            </div>
-                            <div className="item-container">
-                                <div className="items-details orders-items-details">
-                                    <p>Name : {data.foodItem.itemname}</p>
-                                    <p>
-                                        {" "}
-                                        <span>
-                                            <FaRupeeSign />
-                                        </span>{" "}
-                                        {data.foodItem.price}
+                            <div className="cart-box2">
+                                <div>
+                                    <img
+                                        className="poster cart-poster"
+                                        src={`http://localhost:8000/restaurantuser/foodImage/${data.foodItem.posterurl}`}
+                                        alt=""
+                                    />
+                                </div>
+                                <div className="all-orders-container">
+                                    <div className="item-container">
+                                        <div className="items-details orders-items-details">
+                                            <p>
+                                                Name : {data.foodItem.itemname}
+                                            </p>
+                                            <p>
+                                                {" "}
+                                                <span>
+                                                    <FaRupeeSign />
+                                                </span>{" "}
+                                                {data.foodItem.price}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <p className="item-quan">
+                                        Quantity : {data.quantity}
                                     </p>
+                                    {data.orderStatus === "Accepted" ? (
+                                        <p
+                                            className="orderstatus"
+                                            style={green}
+                                        >
+                                            <span className="order-status">
+                                                Status :
+                                            </span>
+                                            {data.orderStatus}
+                                        </p>
+                                    ) : null}
+                                    {data.orderStatus === "Rejected" ? (
+                                        <p className="orderstatus" style={red}>
+                                            <span className="order-status">
+                                                Status :
+                                            </span>
+                                            {data.orderStatus}
+                                        </p>
+                                    ) : null}
+                                    {data.orderStatus === "pending" ? (
+                                        <p
+                                            style={{ width: "200px" }}
+                                            className="orderstatus pending"
+                                        >
+                                            <span className="order-status">
+                                                Status :
+                                            </span>
+                                            {data.orderStatus}
+                                        </p>
+                                    ) : null}
                                 </div>
                             </div>
-                            <p className="item-quan">
-                                Quantity: {data.quantity}
-                            </p>
-                            {data.orderStatus === "Accepted" ? (
-                                <p className="orderstatus" style={green}>
-                                    <span className="order-status">
-                                        Status :
-                                    </span>
-                                    {data.orderStatus}
-                                </p>
-                            ) : null}
-                            {data.orderStatus === "Rejected" ? (
-                                <p className="orderstatus" style={red}>
-                                    <span className="order-status">
-                                        Status :
-                                    </span>
-                                    {data.orderStatus}
-                                </p>
-                            ) : null}
-                            {data.orderStatus === "pending" ? (
-                                <p className="orderstatus pending">
-                                    <span className="order-status">
-                                        Status :
-                                    </span>
-                                    {data.orderStatus}
-                                </p>
-                            ) : null}
                         </div>
                     );
                 })}
 
                 {/* display totalprice */}
-                {allitems.length != 0 ? (
-                    <div className="payment">
-                        <div className="check-out" style={{ margin: "auto" }}>
-                            {/* <h1>Check Out</h1> */}
-                            <div
-                                style={{
-                                    display: "flex",
-                                    width: "100%",
-                                    boxSizing: "border-box",
-                                    justifyContent: "space-between",
-                                    color: "black",
-                                    marginTop: "20px",
-                                }}
-                            >
-                                <h1 style={{ marginRight: "10px" }}>
-                                    Total Price :{" "}
-                                </h1>
-                                <h1
-                                    className="price"
-                                    style={{ marginRight: "40px " }}
-                                >
-                                    &#8377; {totalprice}
-                                </h1>
-                            </div>
-                        </div>
-                    </div>
-                ) : (
+                {allitems.length != 0 ? null : (
                     <Link to={"/main/" + datas.id}>
                         <button className="explore-btn">
                             Explore Food items

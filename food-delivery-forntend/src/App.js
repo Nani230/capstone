@@ -8,6 +8,8 @@ import Resindex from "./restarentcomponentes/Resindex";
 import "./css/App.css";
 import "./css/Mobile.css";
 import "./css/Mobiles.css";
+import "./css/Mobile4.css";
+
 import "./css/Ipad.css";
 import "./css/Pad.css";
 import "./css/Pc.css";

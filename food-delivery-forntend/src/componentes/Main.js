@@ -86,6 +86,12 @@ function Main() {
                     {state === true ? (
                         <div className="slider" style={style}>
                             <div className="resindex-btns">
+                                <button className="res-btn-login">
+                                    <span className="main-title-name">
+                                        Hello , {data.name}
+                                    </span>
+                                </button>
+                                <hr style={border} />
                                 <Link to={"/orders/" + data.id}>
                                     <button className="res-btn-login">
                                         Orders
@@ -119,7 +125,9 @@ function Main() {
                     )}
                 </div>
                 {/* this is for pc navbar feching username */}
-                <span className="main-title-name">Hello {data.name}</span>
+                <span className="main-title-name mains-title-name">
+                    Hello {data.name}
+                </span>
                 <div className="navbar-btns">
                     <Link to={"/orders/" + data.id}>
                         <button className="user-navbar-btn">Orders</button>
@@ -166,7 +174,7 @@ function Main() {
                             <div className="hotal-main" key={index}>
                                 <div>
                                     <img
-                                        className="poster"
+                                        className="poster  mobile-poster"
                                         src={`http://localhost:8000/restaurantuser/resImage/${data.posterurl}`}
                                         alt=""
                                     />

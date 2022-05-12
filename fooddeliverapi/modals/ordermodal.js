@@ -20,6 +20,11 @@ const orderSchema = new mongoose.Schema(
             ref: "restarurantusers",
             required: true,
         },
+        addres: {
+            type: String,
+            required: true,
+        },
+        ordermobile: { type: Number, required: true, unique: true },
         orderStatus: {
             type: String,
             required: true,

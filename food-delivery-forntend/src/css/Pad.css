@@ -304,6 +304,15 @@
         font-size: 17px;
         margin-top: 15px;
     }
+    .payment-title {
+        font-size: 8px !important;
+    }
+    .items-details {
+        margin-left: 15px !important;
+    }
+    .mains-title-name {
+        display: none;
+    }
     .user-navbar-btn {
         display: none;
     }
@@ -312,10 +321,58 @@
     }
     /* css for global allorders */
     .cart-box {
-        height: 270px !important;
+        height: 260px !important;
         display: flex;
         margin-top: 50px !important;
         flex-direction: column;
+    }
+    .mobile-poster {
+        height: 250px !important;
+    }
+    .cart-box3 {
+        height: 330px !important;
+        display: flex;
+        margin-top: 50px !important;
+        flex-direction: column;
+    }
+    .cart-box2 {
+        display: block;
+    }
+    .user-navbar-btn-2 {
+        margin-left: 0px !important;
+    }
+    .left-title {
+        margin-left: 15px !important;
+    }
+    .check-out {
+        width: 220px !important;
+        font-size: 10px;
+    }
+    .user-navbar {
+        display: flex;
+        width: 100%;
+
+        justify-content: space-between !important;
+    }
+    .past-order-font-icon {
+        margin-top: 0px !important;
+        margin-left: 0px !important;
+        width: 90%;
+        margin-right: 0px !important;
+    }
+    .user-addres {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        font-size: 12px;
+        font-weight: bold;
+    }
+    .user-addres > P {
+        margin-top: 10px !important;
+        margin-bottom: 0px !important;
+
+        font-size: 15px;
+        font-weight: bold;
     }
     .cart-quantits {
         margin-top: 0px !important;
@@ -333,12 +390,16 @@
         margin-top: 0px !important;
         font-size: 12px;
         margin-bottom: 0px !important;
-        margin-left: 10px !important;
+        margin-left: 0px !important;
+    }
+    .order-font-icons {
+        margin-top: 0px !important;
+        margin-bottom: 10px !important;
     }
     .orderstatus {
         width: 100% !important;
         margin-top: 0px !important;
-        margin-left: 10px;
+        margin-left: 0px !important;
         font-size: 10px;
     }
     .orders-items-details > p {
@@ -350,7 +411,7 @@
     }
     .items-details > p {
         font-size: 15px;
-        margin-left: 13px;
+        margin-left: 0px !important;
     }
     .item-des {
         font-size: 15px;
@@ -368,6 +429,17 @@
         display: flex;
         justify-content: flex-start;
         justify-content: space-between;
+    }
+    .res-btn-signup {
+        border: none;
+        background-color: transparent;
+        color: black;
+    }
+    .res-items-details > p {
+        margin-left: 15px !important;
+    }
+    .cart-poster {
+        height: 140px !important;
     }
     .cart-food-main-container {
         padding-left: 0px !important;

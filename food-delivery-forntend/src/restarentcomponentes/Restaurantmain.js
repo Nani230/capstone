@@ -461,7 +461,7 @@ function Restaurantmain() {
             <div className="food-main">
                 <h1 className="foo-title">All Food Items </h1>
 
-                <div className="food-main-container ">
+                <div className="food-main-container  ">
                     {cart.map((data, index) => {
                         return (
                             <div className="hotal-main" key={index}>
@@ -473,13 +473,30 @@ function Restaurantmain() {
                                     />
                                 </div>
                                 <div className="item-container">
-                                    <div className="items-details">
+                                    <div className="res-items-details">
                                         <p>Name : {data.itemname}</p>
                                         <p> {data.price}</p>
                                     </div>
                                 </div>
-                                <p className="item-des">
+
+                                <p
+                                    style={{
+                                        fontWeight: "bold",
+                                    }}
+                                    className="item-des"
+                                >
                                     Des : {data.description}
+                                </p>
+                                <p
+                                    className="left-title"
+                                    style={{
+                                        fontWeight: "bold",
+                                        marginLeft: "25px",
+                                        marginTop: "0px",
+                                        paddingBottom: "10px",
+                                    }}
+                                >
+                                    food Left : {data.quantity}
                                 </p>
                                 <div className="font-icons order-font-icon">
                                     <span

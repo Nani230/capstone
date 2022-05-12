@@ -226,7 +226,22 @@
         font-weight: bold;
     }
     .item-container {
-        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        width: 300px;
+    }
+    .item-quan {
+        width: 200px !important;
+        margin-left: 23px;
+        padding-bottom: 20px;
+        color: rgb(105, 105, 105);
+        font-weight: bold;
+        margin-top: 45px;
+    }
+    .user-addres {
+        display: flex;
+        justify-content: space-between;
+        width: 300px;
     }
     /* css for cart */
     .cart-quantity {

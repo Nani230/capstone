@@ -329,8 +329,23 @@
         margin-left: 13px;
         font-weight: bold;
     }
+    .item-quan {
+        width: 200px !important;
+        margin-left: 23px;
+        padding-bottom: 20px;
+        color: rgb(105, 105, 105);
+        font-weight: bold;
+        margin-top: 45px;
+    }
+    .user-addres {
+        display: flex;
+        justify-content: space-between;
+        width: 300px;
+    }
     .item-container {
-        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        width: 300px;
     }
     /* css for cart */
     .cart-quantity {
@@ -385,11 +400,7 @@
         position: fixed;
         top: 0px;
     }
-    .res-btn-login {
-        color: black;
-        border: none;
-        margin-top: 10px;
-    }
+
     .resindex-btns {
         line-height: 0 !important;
     }

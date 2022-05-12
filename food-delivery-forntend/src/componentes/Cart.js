@@ -1,6 +1,6 @@
 import { Component, useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { FaPen } from "react-icons/fa";
+import { FaPen, FaTrash } from "react-icons/fa";
 import { MdClose, MdCall, MdLocationOn } from "react-icons/md";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import { FaRupeeSign } from "react-icons/fa";
@@ -19,6 +19,7 @@ function Cart() {
     let [quantity, setquantity] = useState(1);
     let [message, setmessage] = useState("");
     let [totalprice, setTotalPrice] = useState();
+    let [useraddres, setuseraddres] = useState([]);
     let [box, setbox] = useState(false);
     let items = "";
     let navigate = useNavigate();
@@ -26,6 +27,22 @@ function Cart() {
     function logout() {
         localStorage.removeItem("details");
         navigate("/");
+    }
+
+    // this for to get all foodItems ids
+    let user = [];
+    function value(value, items) {
+        user.push(value);
+    }
+    // this is for to send food items to orders page
+    let users = {};
+    function readvalue(pro, value) {
+        users[pro] = value;
+    }
+    //  this for geting addres from user
+    let addresuser = {};
+    function addresvalue(pro, value) {
+        addresuser[pro] = value;
     }
     let style = {
         width: "70%",
@@ -102,6 +119,29 @@ function Cart() {
             });
     }
 
+    function addres() {
+        console.log(addresuser);
+        let token = JSON.parse(localStorage.getItem("details"));
+        let realtoken = token.token;
+        fetch(`http://localhost:8000/cart/addres/${datas.id}`, {
+            method: "put",
+            headers: {
+                Authorization: `Bearer ${realtoken}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(addresuser),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                if (data.success === true) {
+                    alert(data.message);
+                } else {
+                    console.log("nothinf");
+                }
+            });
+    }
+
     // usesate to cancel box
     function statefalse() {
         setstates(false);
@@ -129,6 +169,19 @@ function Cart() {
                 setdata(data);
             })
             .catch((err) => console.log(err));
+
+        fetch("http://localhost:8000/cart/addres/" + datas.id, {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${realtoken}`,
+            },
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                setuseraddres(data);
+            })
+            .catch((err) => console.log(err));
     }, []);
     useEffect(() => {
         // total price
@@ -142,6 +195,7 @@ function Cart() {
             setTotalPrice(0);
         }
     }, [data]);
+
     // this is delete function
     function deletedata(id) {
         let token = JSON.parse(localStorage.getItem("details"));
@@ -168,16 +222,7 @@ function Cart() {
             })
             .catch((err) => console.log(err));
     }
-    // this for to get all foodItems ids
-    let user = [];
-    function value(value, items) {
-        user.push(value);
-    }
-    // this is for to send food items to orders page
-    let users = {};
-    function readvalue(pro, value) {
-        users[pro] = value;
-    }
+
     //   this function is check out
     function chekout() {
         console.log(user);
@@ -208,7 +253,7 @@ function Cart() {
             .catch((err) => console.log(err));
     }
 
-    console.log(items);
+    console.log(useraddres);
 
     return (
         <div className="cart-main">
@@ -238,6 +283,11 @@ function Cart() {
                     {state === true ? (
                         <div className="slider" style={style}>
                             <div className="resindex-btns">
+                                <button className="res-btn-login">
+                                    <span className="main-title-name">
+                                        Hello , {datas.name}
+                                    </span>
+                                </button>
                                 <Link to={"/orders/" + datas.id}>
                                     <button className="res-btn-login">
                                         Orders
@@ -271,7 +321,9 @@ function Cart() {
                     )}
                 </div>
                 {/* this is for normal pc navbar */}
-                <span className="main-title-name">Hello {datas.name}</span>
+                <span className="main-title-name mains-title-name">
+                    Hello {datas.name}
+                </span>
                 <div className="navbar-btns">
                     <Link to={"/orders/" + datas.id}>
                         <button className="user-navbar-btn">Orders</button>
@@ -293,51 +345,56 @@ function Cart() {
                         return (
                             <div className="hotal-main cart-box" key={index}>
                                 {value(data._id, data.quantity)}
-                                <div>
-                                    <img
-                                        className="poster cart-poster"
-                                        src={`http://localhost:8000/restaurantuser/foodImage/${data.foodItem.posterurl}`}
-                                        alt=""
-                                    />
-                                </div>
-                                <div className="item-container ">
-                                    <div className="orders-items-details">
-                                        <p>Name : {data.foodItem.itemname}</p>
-                                        <p>
-                                            {" "}
-                                            <span>
-                                                <FaRupeeSign />
-                                            </span>
-                                            {data.foodItem.price}
-                                        </p>
+                                <div className="cart-box2">
+                                    <div>
+                                        <img
+                                            className="poster cart-poster"
+                                            src={`http://localhost:8000/restaurantuser/foodImage/${data.foodItem.posterurl}`}
+                                            alt=""
+                                        />
                                     </div>
-                                </div>
-
-                                <div className="cart-quantits" key={index}>
-                                    <p>Quantity: {data.quantity}</p>
-
-                                    <span
-                                        className="cart-pen"
-                                        onClick={() => {
-                                            statetrue(
-                                                data._id,
-                                                data.restaurant
-                                            );
-                                        }}
-                                    >
-                                        <FaPen />
-                                    </span>
-                                </div>
-                                <div className="font-icons">
-                                    <span
-                                        className="cart-button"
-                                        onClick={() => {
-                                            deletedata(data._id);
-                                            refreshPage();
-                                        }}
-                                    >
-                                        Remove item
-                                    </span>
+                                    <div className="all-orders-container">
+                                        <div className="item-container">
+                                            <div className="items-details orders-items-details">
+                                                <p>
+                                                    Name :{" "}
+                                                    {data.foodItem.itemname}
+                                                </p>
+                                                <p>
+                                                    {" "}
+                                                    <span>
+                                                        <FaRupeeSign />
+                                                    </span>{" "}
+                                                    {data.foodItem.price}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <p className="item-quan">
+                                            Quantity : {data.quantity}
+                                        </p>
+                                        <div className="past-order-font-icon">
+                                            <span
+                                                className="cart-pens"
+                                                onClick={() => {
+                                                    statetrue(
+                                                        data._id,
+                                                        data.restaurant
+                                                    );
+                                                }}
+                                            >
+                                                <FaPen />
+                                            </span>
+                                            <span
+                                                className="trash"
+                                                onClick={() => {
+                                                    deletedata(data._id);
+                                                    refreshPage();
+                                                }}
+                                            >
+                                                <FaTrash />
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         );
@@ -388,9 +445,30 @@ function Cart() {
             </div>
 
             {addstate === true ? (
-                <div className="res-update">
+                <div className="res-update res-update-addres">
                     <h2> Orderall your item </h2>
-
+                    <div className="res-main-update">
+                        <input
+                            className="logininput3"
+                            type="number"
+                            // defaultValue={datas.itemname}
+                            placeholder="add number"
+                            defaultValue={useraddres.ordermobile}
+                            onChange={(event) => {
+                                addresvalue("ordermobile", event.target.value);
+                            }}
+                        />
+                        <input
+                            className="logininput3"
+                            // defaultValue={datas.price}
+                            type="text"
+                            placeholder="add addres"
+                            defaultValue={useraddres.addres}
+                            onChange={(event) => {
+                                addresvalue("addres", event.target.value);
+                            }}
+                        />
+                    </div>
                     <div className="reg-btns">
                         <button
                             onClick={addstatefalse}
@@ -400,8 +478,9 @@ function Cart() {
                         </button>
                         <button
                             onClick={() => {
+                                addres();
                                 chekout();
-                                refreshPage();
+                                // refreshPage();
                             }}
                             className="reg-signup-btn update-sub-btn"
                         >

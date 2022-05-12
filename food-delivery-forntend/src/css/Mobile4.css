@@ -1,4 +1,4 @@
-@media (max-width: 280px) {
+@media (max-width: 350px) {
     .App {
         width: 100% !important;
     }
@@ -294,14 +294,8 @@
         font-size: 17px !important;
         margin-top: 15px !important;
     }
-    .mains-title-name {
-        display: none;
-    }
     .user-navbar-btn {
         display: none;
-    }
-    .mobile-poster {
-        height: 250px !important;
     }
     .user-navbar-btn-2 {
         margin-left: 100px !important;
@@ -310,6 +304,7 @@
     .cart-box {
         width: 90% !important;
         height: 220px !important;
+
         display: flex;
         margin-top: 50px !important;
         flex-direction: column;
@@ -362,7 +357,6 @@
         margin-top: 0px !important;
         margin-bottom: 10px !important;
         display: flex;
-        justify-content: space-around;
     }
     .font-icons > span {
         margin-top: 0px;
