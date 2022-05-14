@@ -32,7 +32,10 @@ rout.post("/register", (req, res) => {
                             success: false,
                         });
                     } else {
-                        console.log(err);
+                       res.send({
+                            message: " imge added",
+                            success: false,
+                        });
                     }
                 }
             );
@@ -48,7 +51,7 @@ rout.post("/register", (req, res) => {
                             userobj
                                 .save()
                                 .then(() => {
-                                    res.send({ message: "registred succus" });
+                                    res.send({ message: "registred succus",success: true, });
                                 })
                                 .catch((err) => console.log(err));
                         } else {
