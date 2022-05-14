@@ -34,7 +34,7 @@ rout.post("/register", (req, res) => {
                     } else {
                        res.send({
                             message: " imge added",
-                            success: false,
+                      
                         });
                     }
                 }
