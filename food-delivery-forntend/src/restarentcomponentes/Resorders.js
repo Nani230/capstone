@@ -218,7 +218,7 @@ function Resorders() {
             </div>
             <h1 className="foo-title">All Your Orders </h1>
             {/* displaying all orders */}
-            <div className="food-main-container res-order-food-main-container">
+                <div className="food-main-container res-order-food-main-container">
                 {allitems.map((data, index) => {
                     return (
                         <div className="hotal-main cart-box3" key={index}>
@@ -226,7 +226,7 @@ function Resorders() {
                                 <div>
                                     <img
                                         className="poster cart-poster"
-                                        src={`${baseURL}/restaurantuser/foodImage/${data.foodItem.posterurl}`}
+                                        src={`http://localhost:8000/restaurantuser/foodImage/${data.foodItem.posterurl}`}
                                         alt=""
                                     />
                                 </div>
@@ -237,10 +237,10 @@ function Resorders() {
                                                 Name : {data.foodItem.itemname}
                                             </p>
                                             <p>
-                                                {' '}
+                                                {" "}
                                                 <span>
                                                     <FaRupeeSign />
-                                                </span>{' '}
+                                                </span>{" "}
                                                 {data.foodItem.price}
                                             </p>
                                         </div>
@@ -250,119 +250,29 @@ function Resorders() {
                                     </p>
 
                                     <div>
-                                        {stat === true ? (
-                                            <div className="font-icons">
-                                                <div className="res-update">
-                                                    <div className="reg-btns">
-                                                        <button
-                                                            onClick={statefalse}
-                                                            className="reg-sign-btn updata-cancel-btn"
-                                                        >
-                                                            cancel
-                                                        </button>
-                                                        <button
-                                                            onClick={() => {
-                                                                datastatetrue(
-                                                                    data._id,
-                                                                );
-
-                                                                changestatus();
-                                                                refreshPage();
-                                                            }}
-                                                            className="reg-signup-btn update-sub-btn"
-                                                        >
-                                                            Reject order
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                {/* <span
-                                            onClick={() => {
-                                                statetrue(data._id);
-                                                changestatus();
-                                            }}
-                                            className="pen"
-                                        >
-                                            Order Accepted
-                                        </span> */}
-                                                {/* <span
-                                            onClick={() => {
-                                                datastatetrue(data._id);
-                                                changestatus();
-                                            }}
-                                            className="trash"
-                                        >
-                                            Reject order
-                                        </span> */}
-                                            </div>
-                                        ) : null}
-                                        {state === true ? (
-                                            <div className="font-icons ">
-                                                <div className="res-update">
-                                                    <div className="reg-btns">
-                                                        <button
-                                                            onClick={statefalse}
-                                                            className="reg-sign-btn updata-cancel-btn"
-                                                        >
-                                                            cancel
-                                                        </button>
-                                                        <button
-                                                            onClick={() => {
-                                                                statetrue(
-                                                                    data._id,
-                                                                );
-
-                                                                changestatus();
-                                                                refreshPage();
-                                                            }}
-                                                            className="reg-signup-btn update-sub-btn"
-                                                        >
-                                                            Accept order
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                {/* <span
-                                            onClick={() => {
-                                                statetrue(data._id);
-                                                changestatus();
-                                            }}
-                                            className="pen"
-                                        >
-                                            Order Accepted
-                                        </span> */}
-                                                {/* <span
-                                            onClick={() => {
-                                                datastatetrue(data._id);
-                                                changestatus();
-                                            }}
-                                            className="trash"
-                                        >
-                                            Reject order
-                                        </span> */}
-                                            </div>
-                                        ) : (
-                                            <div className="order-font-icons items-order-details">
-                                                <span
-                                                    onClick={() => {
-                                                        statetrue(data._id);
-                                                        // changestatus();
-                                                    }}
-                                                    className="pen"
-                                                >
-                                                    {data.AcceptStatus}
-                                                </span>
-                                                <span
-                                                    onClick={() => {
-                                                        datastatetrue(data._id);
-                                                        // changestatus();
-                                                    }}
-                                                    className="trash"
-                                                >
-                                                    {data.rejectStatus}{' '}
-                                                </span>
-                                            </div>
-                                        )}
+                                        <div className="order-font-icons  items-order-details ">
+                                            <span
+                                                onClick={() => {
+                                                    statetrue(data._id);
+                                                    // changestatus();
+                                                }}
+                                                className="pen"
+                                            >
+                                                {data.AcceptStatus}
+                                            </span>
+                                            <span
+                                                onClick={() => {
+                                                    datastatetrue(data._id);
+                                                    // changestatus();
+                                                }}
+                                                className="trash"
+                                            >
+                                                {data.rejectStatus}{" "}
+                                            </span>
+                                        </div>
                                     </div>
-                                   <div className="user-addres">
+
+                                    <div className="user-addres">
                                         <p>Name : {data.customer.name}</p>
                                         <p>
                                             Mobile : {data.customer.ordermobile}
@@ -376,7 +286,57 @@ function Resorders() {
                         </div>
                     );
                 })}
-            </div>
+                {state === true ? (
+                    <div className="font-icons">
+                        <div className="res-update">
+                            <div className="reg-btns">
+                                <button
+                                    onClick={statefalse}
+                                    className="reg-sign-btn updata-cancel-btn"
+                                >
+                                    cancel
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        statetrue(data._id);
+
+                                        changestatus();
+                                        refreshPage();
+                                    }}
+                                    className="reg-signup-btn update-sub-btn"
+                                >
+                                    Accept order
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                ) : null}
+                {stat === true ? (
+                    <div className="font-icons">
+                        <div className="res-update">
+                            <div className="reg-btns">
+                                <button
+                                    onClick={statefalse}
+                                    className="reg-sign-btn updata-cancel-btn"
+                                >
+                                    cancel
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        datastatetrue(data._id);
+
+                                        changestatus();
+                                        refreshPage();
+                                    }}
+                                    className="reg-signup-btn update-sub-btn"
+                                >
+                                    Reject order
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                ) : null}
+            </div
             {/* toast message */}
             {box === true ? (
                 <div className="login-toast-message">{message}</div>
