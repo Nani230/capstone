@@ -468,7 +468,7 @@ function Restaurantmain() {
                                     />
                                 </div>
                                 <div className="item-container">
-                                    <div className="res-items-details">
+                                    <div className="items-details user-order-details orders-items-details">
                                         <p>Name : {data.itemname}</p>
                                         <p> {data.price}</p>
                                     </div>
