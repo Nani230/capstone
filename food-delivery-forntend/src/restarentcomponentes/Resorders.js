@@ -336,7 +336,7 @@ function Resorders() {
                         </div>
                     </div>
                 ) : null}
-            </div
+            </div>
             {/* toast message */}
             {box === true ? (
                 <div className="login-toast-message">{message}</div>
