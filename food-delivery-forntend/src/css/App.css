@@ -1,10 +1,8 @@
 /* for registration
-
 * {
     margin: 0px;
     padding: 0px;
 }
-
 /* for backgroung img */
 .main {
     width: 100%;
@@ -228,7 +226,7 @@
     width: 40%;
 }
 .login-side-img1 {
-    width: 100%;
+    width: 80%;
     margin-top: 70%;
 }
 /* for index page */
@@ -380,12 +378,6 @@
     width: 80%;
     margin-right: 20px;
     font-weight: bold;
-}
-.items-order-details > p {
-    margin-top: 0px !important;
-}
-.items-order-details {
-    margin-top: 10px !important;
 }
 .orders-items-details > p {
     margin-top: 45px;
@@ -1389,6 +1381,12 @@
     border: 1px solid green;
     font-weight: bold;
 }
+.items-order-details > p {
+    margin-top: 0px !important;
+}
+.items-order-details {
+    margin-top: 10px !important;
+}
 .main-time {
     display: flex;
     justify-content: space-between;
@@ -1520,4 +1518,11 @@
     margin-top: 45px;
     display: flex;
     justify-content: space-between;
+}
+.user-addres > P,
+.user-addres {
+    margin-top: 0px;
+}
+.users-addres {
+    display: none;
 }

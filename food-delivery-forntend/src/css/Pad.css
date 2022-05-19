@@ -5,6 +5,7 @@
     .index {
         width: 100%;
     }
+
     .user-main {
         width: 100%;
         height: 400px;
@@ -39,6 +40,10 @@
     .index-navbar-btns {
         display: none;
     }
+    .food-main-container {
+        padding-left: 10px !important;
+        padding-right: 0px !important;
+    }
     .user-main-details {
         width: 50%;
         margin-left: 20px;
@@ -70,11 +75,9 @@
     }
     .hotal-main {
         margin-bottom: 20px;
-        width: 350px;
+        width: 300px;
     }
-    .poster {
-        width: 93%;
-    }
+
     /* css for sliders */
     .wrong-btn {
         color: white;
@@ -321,16 +324,18 @@
     }
     /* css for global allorders */
     .cart-box {
-        height: 260px !important;
+        height: 270px !important;
         display: flex;
         margin-top: 50px !important;
         flex-direction: column;
+        width: 300px !important;
+        margin-left: 15px !important;
     }
     .mobile-poster {
         height: 250px !important;
     }
     .cart-box3 {
-        height: 330px !important;
+        height: 340px !important;
         display: flex;
         margin-top: 50px !important;
         flex-direction: column;
@@ -391,6 +396,7 @@
         font-size: 12px;
         margin-bottom: 0px !important;
         margin-left: 0px !important;
+        padding-bottom: 0px !important;
     }
     .order-font-icons {
         margin-top: 0px !important;
@@ -401,6 +407,10 @@
         margin-top: 0px !important;
         margin-left: 0px !important;
         font-size: 10px;
+    }
+
+    .orders-cart-items-details {
+        margin-left: 0px !important;
     }
     .orders-items-details > p {
         margin-top: 0px !important;
@@ -438,9 +448,14 @@
     .res-items-details > p {
         margin-left: 15px !important;
     }
+    .user-hotal-main {
+        width: 350px !important;
+    }
     .cart-poster {
         height: 140px !important;
+        width: 90% !important;
     }
+
     .cart-food-main-container {
         padding-left: 0px !important;
     }
@@ -454,7 +469,9 @@
     .cart-quantity > p {
         margin-top: 0px;
     }
-
+    .poster {
+        height: 160px !important;
+    }
     /* css for sliders */
 
     .menu-lines {
@@ -625,5 +642,57 @@
         left: 5%;
         top: 0%;
         background-color: #fff;
+    }
+    .users-addres {
+        width: 90%;
+        display: block;
+        display: flex !important;
+        justify-content: space-between;
+        font-size: 10px;
+        font-weight: bold;
+        margin-top: 5px !important;
+    }
+    .users-addres > p {
+        margin-top: 5px !important;
+        margin-bottom: 5px !important;
+    }
+    .user-addres {
+        display: none !important;
+    }
+    .items-resorder-details {
+        margin-left: 0px !important;
+    }
+    .res-order-pen {
+        padding: 5px;
+        border: 1px solid green;
+    }
+
+    .res-order-trash {
+        padding: 5px;
+        border: 1px solid red;
+    }
+    .add-btn,
+    .add-btn-order {
+        margin-left: 15px !important;
+        margin-bottom: 10px;
+        padding-right: 7px;
+        padding-left: 7px;
+        padding-top: 7px;
+        padding-bottom: 7px;
+        border-radius: 10px;
+        cursor: pointer;
+        background-color: green;
+        color: #fff;
+        border: 1px solid green;
+        font-weight: bold;
+    }
+    .past-order-font-icon {
+        margin-top: 10px !important;
+    }
+    .payment {
+        margin-left: 15px !important;
+    }
+    .mobile-poster {
+        height: 250px !important;
     }
 }
