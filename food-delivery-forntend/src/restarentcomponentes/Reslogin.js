@@ -1,5 +1,4 @@
-import { baseURL } from '../App';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
 
 function Reslogin() {
     let navigate = useNavigate();
@@ -14,12 +13,12 @@ function Reslogin() {
         console.log(user);
 
         if ((user.username === undefined) & (user.password === undefined)) {
-            console.log('something is wrong');
+            console.log("something is wrong");
         } else {
-            fetch(`${baseURL}/restaurantuser/login`, {
-                method: 'POST',
+            fetch("http://localhost:8000/restaurantuser/login", {
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/json',
+                    "Content-Type": "application/json",
                 },
                 body: JSON.stringify(user),
             })
@@ -28,18 +27,18 @@ function Reslogin() {
                     console.log(data);
                     if (data.success === true) {
                         localStorage.setItem(
-                            'details',
+                            "details",
                             JSON.stringify({
                                 token: data.token,
                                 id: data._id,
                                 role: data.role,
-                            }),
+                            })
                         );
-                        navigate('/resturenthome/' + data._id);
+                        navigate("/resturenthome/" + data._id);
                     } else {
-                        alert('password or user is wrong');
+                        alert("password or user is wrong");
 
-                        console.log('err');
+                        console.log("err");
                     }
                 })
                 .catch((err) => {
@@ -65,7 +64,7 @@ function Reslogin() {
                                 type="text"
                                 placeholder="Enter username"
                                 onChange={(event) => {
-                                    readvalue('username', event.target.value);
+                                    readvalue("username", event.target.value);
                                 }}
                             />
                             <input
@@ -73,13 +72,13 @@ function Reslogin() {
                                 type="password"
                                 placeholder="Enter password"
                                 onChange={(event) => {
-                                    readvalue('password', event.target.value);
-                                    readvalue('role', 'restaurant');
+                                    readvalue("password", event.target.value);
+                                    readvalue("role", "restaurant");
                                 }}
                             />
 
                             <div className="reg-btns">
-                                <Link to={'/resturentregister'}>
+                                <Link to={"/resturentregister"}>
                                     <button className="reg-sign-btn">
                                         Register
                                     </button>

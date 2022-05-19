@@ -1,35 +1,35 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { MdClose, MdCall, MdLocationOn } from 'react-icons/md';
-import { FaFacebookF, FaInstagram } from 'react-icons/fa';
-import { GrMail } from 'react-icons/gr';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { MdClose, MdCall, MdLocationOn } from "react-icons/md";
+import { FaFacebookF, FaInstagram } from "react-icons/fa";
+import { GrMail } from "react-icons/gr";
 function Resindex() {
     // useStates
     let [state, setstate] = useState(false);
     // internal css
     let style = {
-        width: '70%',
-        height: '100vh',
-        color: '#fff',
+        width: "70%",
+        height: "100vh",
+        color: "#fff",
         lineHeight: 10,
-        backgroundColor: '#fff',
-        marginLeft: '0px',
+        backgroundColor: "#fff",
+        marginLeft: "0px",
         // display: "none",
 
-        transition: '0.50s',
+        transition: "0.50s",
     };
     let styles = {
-        width: '50%',
-        height: '100vh',
-        color: '#fff',
+        width: "50%",
+        height: "100vh",
+        color: "#fff",
         lineHeight: 10,
-        padding: '1.5em',
-        backgroundColor: '#fff',
-        marginLeft: '-1400px',
-        transition: '0.50s',
+        padding: "1.5em",
+        backgroundColor: "#fff",
+        marginLeft: "-1400px",
+        transition: "0.50s",
     };
     let border = {
-        border: '1px solid #e1e1e1',
+        border: "1px solid #e1e1e1",
     };
 
     return (
@@ -61,14 +61,14 @@ function Resindex() {
                             {state === true ? (
                                 <div className="slider" style={style}>
                                     <div className="resindex-btns">
-                                        <Link to={'/resturentlogin'}>
+                                        <Link to={"/resturentlogin"}>
                                             <button className="res-btn-login">
                                                 Login
                                             </button>
                                             <hr style={border} />
                                         </Link>
 
-                                        <Link to={'/resturentregister'}>
+                                        <Link to={"/resturentregister"}>
                                             <button className="res-btn-signup">
                                                 Create Account
                                             </button>
@@ -84,13 +84,13 @@ function Resindex() {
                                     >
                                         X
                                     </span>
-                                    <Link to={'/resturentlogin'}>
+                                    <Link to={"/resturentlogin"}>
                                         <button className="res-btn-login">
                                             Login
                                         </button>
                                     </Link>
 
-                                    <Link to={'/resturentregister'}>
+                                    <Link to={"/resturentregister"}>
                                         <button className="res-btn-signup">
                                             Create Account
                                         </button>
@@ -101,11 +101,11 @@ function Resindex() {
                         {/* pc navbar */}
                         <h1 className="res-title">for Business</h1>
                         <div className="res-btn res-index-btns">
-                            <Link to={'/resturentlogin'}>
+                            <Link to={"/resturentlogin"}>
                                 <button className="res-btn-login">Login</button>
                             </Link>
 
-                            <Link to={'/resturentregister'}>
+                            <Link to={"/resturentregister"}>
                                 <button className="res-btn-signup">
                                     Create Account
                                 </button>
@@ -121,14 +121,14 @@ function Resindex() {
                             </div>
 
                             <div className="res-another-btns">
-                                <Link to={'/resturentregister'}>
+                                <Link to={"/resturentregister"}>
                                     <button className="res-another-reg-btn">
                                         Register Your restaurant
                                     </button>
                                 </Link>
-                                <Link to={'/resturentlogin'}>
+                                <Link to={"/resturentlogin"}>
                                     <button className="res-another-sigin-btn">
-                                        Restaurant already listed? login now{' '}
+                                        Restaurant already listed? login now{" "}
                                     </button>
                                 </Link>
                             </div>
@@ -141,10 +141,10 @@ function Resindex() {
                     <h1>Why should you partner with Zomato?</h1>
                     <p>
                         Zomato enables you to get 60% more revenue, 10x new
-                        customers and boost your brand{' '}
+                        customers and boost your brand{" "}
                     </p>
                     <p>
-                        {' '}
+                        {" "}
                         visibility by providing insights to improve your
                         business.
                     </p>
