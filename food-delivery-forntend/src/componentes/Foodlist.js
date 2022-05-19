@@ -1,9 +1,8 @@
-import { baseURL } from '../App';
-import { useEffect, useRef, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { MdClose, MdCall, MdLocationOn } from 'react-icons/md';
-import { FaFacebookF, FaInstagram } from 'react-icons/fa';
-import { GrMail } from 'react-icons/gr';
+import { useEffect, useRef, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { MdClose, MdCall, MdLocationOn } from "react-icons/md";
+import { FaFacebookF, FaInstagram } from "react-icons/fa";
+import { GrMail } from "react-icons/gr";
 
 // this for landing page  with out any login
 
@@ -15,43 +14,49 @@ function Foodlist() {
     let [hotel, sethotal] = useState([]);
     let [state, setstate] = useState(false);
     let style = {
-        width: '70%',
-        height: '100vh',
-        color: '#fff',
+        width: "70%",
+        height: "100vh",
+        color: "#fff",
         lineHeight: 10,
-        backgroundColor: '#fff',
-        marginLeft: '0px',
+        backgroundColor: "#fff",
+        marginLeft: "0px",
         // display: "none",
 
-        transition: '0.50s',
+        transition: "0.50s",
     };
     let styles = {
-        width: '50%',
-        height: '100vh',
-        color: '#fff',
+        width: "50%",
+        height: "100vh",
+        color: "#fff",
         lineHeight: 10,
-        padding: '1.5em',
-        backgroundColor: '#fff',
-        marginLeft: '-1400px',
-        transition: '0.50s',
+        padding: "1.5em",
+        backgroundColor: "#fff",
+        marginLeft: "-1400px",
+        transition: "0.50s",
     };
     let border = {
-        border: '1px solid #e1e1e1',
+        border: "1px solid #e1e1e1",
     };
     // this is useEffect used for fech all food items. noneuser Selected Restaurent
     useEffect(() => {
-        let token = JSON.parse(localStorage.getItem('resdetails'));
-        fetch(`${baseURL}/restaurantuser/allresturent/${prams.current.id}`, {
-            method: 'GET',
-        })
+        let token = JSON.parse(localStorage.getItem("resdetails"));
+        fetch(
+            `http://localhost:8000/restaurantuser/allresturent/${prams.current.id}`,
+            {
+                method: "GET",
+            }
+        )
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
                 sethotal(data);
             });
-        fetch(`${baseURL}/restaurantuser/items/${prams.current.id}`, {
-            method: 'GET',
-        })
+        fetch(
+            `http://localhost:8000/restaurantuser/items/${prams.current.id}`,
+            {
+                method: "GET",
+            }
+        )
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
@@ -89,19 +94,19 @@ function Foodlist() {
                     {state === true ? (
                         <div className="slider index-slider" style={style}>
                             <div className="resindex-btns">
-                                <Link to={'/resturentindex'}>
+                                <Link to={"/resturentindex"}>
                                     <button className="res-btn-login">
                                         Add Restaurant
                                     </button>
                                     <hr style={border} />
                                 </Link>
-                                <Link to={'/login'}>
+                                <Link to={"/login"}>
                                     <button className="res-btn-login">
                                         Log in
                                     </button>
                                     <hr style={border} />
                                 </Link>
-                                <Link to={'/register'}>
+                                <Link to={"/register"}>
                                     <button className="res-btn-login">
                                         Sign up
                                     </button>
@@ -111,19 +116,19 @@ function Foodlist() {
                         </div>
                     ) : (
                         <div className="slider" style={styles}>
-                            <Link to={'/resturentindex'}>
+                            <Link to={"/resturentindex"}>
                                 <button className="res-btn-login">
                                     Add Restaurant
                                 </button>
                                 <hr style={border} />
                             </Link>
-                            <Link to={'/login'}>
+                            <Link to={"/login"}>
                                 <button className="res-btn-login">
                                     Log in
                                 </button>
                                 <hr style={border} />
                             </Link>
-                            <Link to={'/register'}>
+                            <Link to={"/register"}>
                                 <button className="res-btn-login">
                                     Sign up
                                 </button>
@@ -134,17 +139,17 @@ function Foodlist() {
                 </div>
                 <span className="index-navbar-title">welcome to foodies</span>
                 <div className="index-navbar-btns">
-                    <Link to={'/resturentindex'}>
+                    <Link to={"/resturentindex"}>
                         <button className="res-btn-login user-index-btn">
                             Add Restaurant
                         </button>
                     </Link>
-                    <Link to={'/login'}>
+                    <Link to={"/login"}>
                         <button className="res-btn-login user-index-btn">
                             Log in
                         </button>
                     </Link>
-                    <Link to={'/register'}>
+                    <Link to={"/register"}>
                         <button className="res-btn-login user-index-btn">
                             Sign up
                         </button>
@@ -159,7 +164,7 @@ function Foodlist() {
                                 <div className="res-user-display" key={index}>
                                     <div className="res-user-display-side">
                                         <h1 className="userfood-res-title">
-                                            Welcome To , {data.restaurantname}{' '}
+                                            Welcome To , {data.restaurantname}{" "}
                                             restaurent
                                         </h1>
                                         <p>Address : {data.address}</p>
@@ -173,7 +178,7 @@ function Foodlist() {
                             <div>
                                 <img
                                     className="res-poster-url userfood-res-img"
-                                    src={`${baseURL}/restaurantuser/resImage/${data.posterurl}`}
+                                    src={`http://localhost:8000/restaurantuser/resImage/${data.posterurl}`}
                                     alt=""
                                 />
                             </div>
@@ -191,7 +196,7 @@ function Foodlist() {
                             <div>
                                 <img
                                     className="poster"
-                                    src={`${baseURL}/restaurantuser/foodImage/${data.posterurl}`}
+                                    src={`http://localhost:8000/restaurantuser/foodImage/${data.posterurl}`}
                                     alt=""
                                 />
                             </div>
@@ -202,7 +207,7 @@ function Foodlist() {
                                 </div>
                             </div>
                             <p className="item-des">Des : {data.description}</p>
-                            <Link to={'/register'}>
+                            <Link to={"/register"}>
                                 <button className="add-btn">Add to Cart</button>
                             </Link>
                         </div>

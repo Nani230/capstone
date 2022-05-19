@@ -1,14 +1,13 @@
-import { baseURL } from '../App';
-import { Component, useEffect, useRef, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import { FaPen, FaTrash } from 'react-icons/fa';
-import { MdClose, MdCall, MdLocationOn } from 'react-icons/md';
-import { FaFacebookF, FaInstagram } from 'react-icons/fa';
-import { FaRupeeSign } from 'react-icons/fa';
-import { GrMail } from 'react-icons/gr';
+import { Component, useEffect, useRef, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { FaPen, FaTrash } from "react-icons/fa";
+import { MdClose, MdCall, MdLocationOn } from "react-icons/md";
+import { FaFacebookF, FaInstagram } from "react-icons/fa";
+import { FaRupeeSign } from "react-icons/fa";
+import { GrMail } from "react-icons/gr";
 function Cart() {
     // user localstorage
-    let datas = JSON.parse(localStorage.getItem('details'));
+    let datas = JSON.parse(localStorage.getItem("details"));
     // useStates
     let [score, setScore] = useState(1);
     let prams = useRef(useParams());
@@ -16,18 +15,18 @@ function Cart() {
     let [state, setstate] = useState(false);
     let [states, setstates] = useState(false);
     let [addstate, setaddstate] = useState(false);
-    let [id, setid] = useState('nothing');
+    let [id, setid] = useState("nothing");
     let [quantity, setquantity] = useState(1);
-    let [message, setmessage] = useState('');
+    let [message, setmessage] = useState("");
     let [totalprice, setTotalPrice] = useState();
     let [useraddres, setuseraddres] = useState([]);
     let [box, setbox] = useState(false);
-    let items = '';
+    let items = "";
     let navigate = useNavigate();
     // inner css
     function logout() {
-        localStorage.removeItem('details');
-        navigate('/');
+        localStorage.removeItem("details");
+        navigate("/");
     }
 
     // this for to get all foodItems ids
@@ -46,27 +45,27 @@ function Cart() {
         addresuser[pro] = value;
     }
     let style = {
-        width: '70%',
-        height: '100vh',
-        color: '#fff',
+        width: "70%",
+        height: "100vh",
+        color: "#fff",
         lineHeight: 10,
-        backgroundColor: '#fff',
-        marginLeft: '0px',
+        backgroundColor: "#fff",
+        marginLeft: "0px",
 
-        transition: '0.50s',
+        transition: "0.50s",
     };
     let styles = {
-        width: '50%',
-        height: '100vh',
-        color: '#fff',
+        width: "50%",
+        height: "100vh",
+        color: "#fff",
         lineHeight: 10,
-        padding: '1.5em',
-        backgroundColor: '#fff',
-        marginLeft: '-1400px',
-        transition: '0.50s',
+        padding: "1.5em",
+        backgroundColor: "#fff",
+        marginLeft: "-1400px",
+        transition: "0.50s",
     };
     let border = {
-        border: '1px solid #e1e1e1',
+        border: "1px solid #e1e1e1",
     };
     // function to refreshPage
     function refreshPage() {
@@ -77,8 +76,8 @@ function Cart() {
         setstates(true);
         setid(id);
         console.log(resid);
-        fetch(`${baseURL}/restaurantuser/items/${resid}`, {
-            method: 'get',
+        fetch(`http://localhost:8000/restaurantuser/items/${resid}`, {
+            method: "get",
         })
             .then((res) => res.json())
             .then((data) => {
@@ -99,13 +98,13 @@ function Cart() {
     // cart update function
     function cartupdate() {
         console.log(cartupdates);
-        let token = JSON.parse(localStorage.getItem('details'));
+        let token = JSON.parse(localStorage.getItem("details"));
         let realtoken = token.token;
-        fetch(`${baseURL}/cart/getitem/${id}`, {
-            method: 'put',
+        fetch(`http://localhost:8000/cart/getitem/${id}`, {
+            method: "put",
             headers: {
                 Authorization: `Bearer ${realtoken}`,
-                'Content-Type': 'application/json',
+                "Content-Type": "application/json",
             },
             body: JSON.stringify(cartupdates),
         })
@@ -115,20 +114,20 @@ function Cart() {
                 if (data.success === true) {
                     alert(data.message);
                 } else {
-                    console.log('nothinf');
+                    console.log("nothinf");
                 }
             });
     }
 
     function addres() {
         console.log(addresuser);
-        let token = JSON.parse(localStorage.getItem('details'));
+        let token = JSON.parse(localStorage.getItem("details"));
         let realtoken = token.token;
-        fetch(`${baseURL}/cart/addres/${datas.id}`, {
-            method: 'put',
+        fetch(`http://localhost:8000/cart/addres/${datas.id}`, {
+            method: "put",
             headers: {
                 Authorization: `Bearer ${realtoken}`,
-                'Content-Type': 'application/json',
+                "Content-Type": "application/json",
             },
             body: JSON.stringify(addresuser),
         })
@@ -138,7 +137,7 @@ function Cart() {
                 if (data.success === true) {
                     alert(data.message);
                 } else {
-                    console.log('nothinf');
+                    console.log("nothinf");
                 }
             });
     }
@@ -154,10 +153,10 @@ function Cart() {
     }
     // useEffect to fech cart items in cart page
     useEffect(() => {
-        let token = JSON.parse(localStorage.getItem('details'));
+        let token = JSON.parse(localStorage.getItem("details"));
         let realtoken = token.token;
-        fetch(`${baseURL}/cart/getitem/` + prams.current.id, {
-            method: 'GET',
+        fetch("http://localhost:8000/cart/getitem/" + prams.current.id, {
+            method: "GET",
             headers: {
                 Authorization: `Bearer ${realtoken}`,
             },
@@ -171,8 +170,8 @@ function Cart() {
             })
             .catch((err) => console.log(err));
 
-        fetch(`${baseURL}/cart/addres/` + datas.id, {
-            method: 'GET',
+        fetch("http://localhost:8000/cart/addres/" + datas.id, {
+            method: "GET",
             headers: {
                 Authorization: `Bearer ${realtoken}`,
             },
@@ -199,11 +198,11 @@ function Cart() {
 
     // this is delete function
     function deletedata(id) {
-        let token = JSON.parse(localStorage.getItem('details'));
+        let token = JSON.parse(localStorage.getItem("details"));
         let realtoken = token.token;
 
-        fetch(`${baseURL}/cart/delete/${id}`, {
-            method: 'DELETE',
+        fetch(`http://localhost:8000/cart/delete/${id}`, {
+            method: "DELETE",
             headers: {
                 Authorization: `Bearer ${realtoken}`,
             },
@@ -218,7 +217,7 @@ function Cart() {
                         setbox(false);
                     }, 1500);
                 } else {
-                    console.log('nothinf');
+                    console.log("nothinf");
                 }
             })
             .catch((err) => console.log(err));
@@ -227,14 +226,14 @@ function Cart() {
     //   this function is check out
     function chekout() {
         console.log(user);
-        let token = JSON.parse(localStorage.getItem('details'));
+        let token = JSON.parse(localStorage.getItem("details"));
         let realtoken = token.token;
 
-        fetch(`${baseURL}/cart/checkout`, {
-            method: 'POST',
+        fetch(`http://localhost:8000/cart/checkout`, {
+            method: "POST",
             headers: {
                 Authorization: `Bearer ${realtoken}`,
-                'Content-Type': 'application/json',
+                "Content-Type": "application/json",
             },
             body: JSON.stringify(user),
         })
@@ -247,7 +246,7 @@ function Cart() {
                         setbox(false);
                     }, 1500);
                 } else {
-                    console.log('nothinf');
+                    console.log("nothinf");
                 }
                 console.log(data);
             })
@@ -289,7 +288,8 @@ function Cart() {
                                         Hello , {datas.name}
                                     </span>
                                 </button>
-                                <Link to={'/orders/' + datas.id}>
+                                <hr style={border} />
+                                <Link to={"/orders/" + datas.id}>
                                     <button className="res-btn-login">
                                         Orders
                                     </button>
@@ -300,7 +300,7 @@ function Cart() {
                                     className="res-btn-login"
                                 >
                                     Logout
-                                </button>{' '}
+                                </button>{" "}
                                 <hr style={border} />
                             </div>
                         </div>
@@ -312,7 +312,10 @@ function Cart() {
                             >
                                 X
                             </span>
-                            <Link to={'/orders/' + datas.id}>
+                            <button className="main-title-name mains-title-name">
+                                Hello {datas.name}
+                            </button>
+                            <Link to={"/orders/" + datas.id}>
                                 <button className="user-navbar-btn">
                                     Orders
                                 </button>
@@ -322,11 +325,12 @@ function Cart() {
                     )}
                 </div>
                 {/* this is for normal pc navbar */}
+
                 <span className="main-title-name mains-title-name">
                     Hello {datas.name}
                 </span>
                 <div className="navbar-btns">
-                    <Link to={'/orders/' + datas.id}>
+                    <Link to={"/orders/" + datas.id}>
                         <button className="user-navbar-btn">Orders</button>
                     </Link>
 
@@ -350,22 +354,22 @@ function Cart() {
                                     <div>
                                         <img
                                             className="poster cart-poster"
-                                            src={`${baseURL}/restaurantuser/foodImage/${data.foodItem.posterurl}`}
+                                            src={`http://localhost:8000/restaurantuser/foodImage/${data.foodItem.posterurl}`}
                                             alt=""
                                         />
                                     </div>
                                     <div className="all-orders-container">
                                         <div className="item-container">
-                                            <div className="items-details orders-items-details">
+                                            <div className="items-details orders-items-details orders-cart-items-details ">
                                                 <p>
-                                                    Name :{' '}
+                                                    Name :{" "}
                                                     {data.foodItem.itemname}
                                                 </p>
                                                 <p>
-                                                    {' '}
+                                                    {" "}
                                                     <span>
                                                         <FaRupeeSign />
-                                                    </span>{' '}
+                                                    </span>{" "}
                                                     {data.foodItem.price}
                                                 </p>
                                             </div>
@@ -379,7 +383,7 @@ function Cart() {
                                                 onClick={() => {
                                                     statetrue(
                                                         data._id,
-                                                        data.restaurant,
+                                                        data.restaurant
                                                     );
                                                 }}
                                             >
@@ -403,25 +407,25 @@ function Cart() {
                 }
                 {data.length != 0 ? (
                     <div className="payment">
-                        <div className="check-out" style={{ margin: 'auto' }}>
+                        <div className="check-out" style={{ margin: "auto" }}>
                             {/* <h1>Check Out</h1> */}
                             <div
                                 className="payment-title"
                                 style={{
-                                    display: 'flex',
-                                    width: '100%',
-                                    boxSizing: 'border-box',
-                                    justifyContent: 'space-between',
-                                    color: 'black',
-                                    marginTop: '20px',
+                                    display: "flex",
+                                    width: "100%",
+                                    boxSizing: "border-box",
+                                    justifyContent: "space-between",
+                                    color: "black",
+                                    marginTop: "20px",
                                 }}
                             >
-                                <h1 style={{ marginRight: '10px' }}>
-                                    Total Price :{' '}
+                                <h1 style={{ marginRight: "10px" }}>
+                                    Total Price :{" "}
                                 </h1>
                                 <h1
                                     className="price"
-                                    style={{ marginRight: '40px ' }}
+                                    style={{ marginRight: "40px " }}
                                 >
                                     &#8377; {totalprice}
                                 </h1>
@@ -437,7 +441,7 @@ function Cart() {
                         </button>
                     </div>
                 ) : (
-                    <Link to={'/main/' + datas.id}>
+                    <Link to={"/main/" + datas.id}>
                         <button className="explore-btn">
                             Explore Food items
                         </button>
@@ -456,7 +460,7 @@ function Cart() {
                             placeholder="add number"
                             defaultValue={useraddres.ordermobile}
                             onChange={(event) => {
-                                addresvalue('ordermobile', event.target.value);
+                                addresvalue("ordermobile", event.target.value);
                             }}
                         />
                         <input
@@ -466,7 +470,7 @@ function Cart() {
                             placeholder="add addres"
                             defaultValue={useraddres.addres}
                             onChange={(event) => {
-                                addresvalue('addres', event.target.value);
+                                addresvalue("addres", event.target.value);
                             }}
                         />
                     </div>
@@ -497,28 +501,28 @@ function Cart() {
                 <div className="res-update">
                     <h2> Update quantity </h2>
                     <div className="res-main-update">
-                        {readvalue('foodItem', id)}
-                        {readvalue('customer', data.id)}
+                        {readvalue("foodItem", id)}
+                        {readvalue("customer", data.id)}
                         <div className="cart-quantity">
                             <button
                                 className="btn1"
                                 onClick={() =>
-                                    score > 1 ? setScore(score - 1) : ''
+                                    score > 1 ? setScore(score - 1) : ""
                                 }
                             >
                                 -
                             </button>
-                            {cartvalue('quantity', score)}
+                            {cartvalue("quantity", score)}
                             <h3>{score}</h3>
 
                             <button
                                 className="btn1"
                                 onClick={() =>
-                                    score < quantity ? setScore(score + 1) : ''
+                                    score < quantity ? setScore(score + 1) : ""
                                 }
                             >
-                                {' '}
-                                +{' '}
+                                {" "}
+                                +{" "}
                             </button>
                         </div>
                     </div>

@@ -1,9 +1,8 @@
-import { baseURL } from '../App';
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { MdClose, MdCall, MdLocationOn } from 'react-icons/md';
-import { FaFacebookF, FaInstagram } from 'react-icons/fa';
-import { GrMail } from 'react-icons/gr';
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { MdClose, MdCall, MdLocationOn } from "react-icons/md";
+import { FaFacebookF, FaInstagram } from "react-icons/fa";
+import { GrMail } from "react-icons/gr";
 function Index() {
     // this is useState
     let [state, setstate] = useState(false);
@@ -11,34 +10,34 @@ function Index() {
 
     // inner css
     let style = {
-        width: '70%',
-        height: '100vh',
-        color: '#fff',
+        width: "70%",
+        height: "100vh",
+        color: "#fff",
         lineHeight: 10,
-        backgroundColor: '#fff',
-        marginLeft: '0px',
+        backgroundColor: "#fff",
+        marginLeft: "0px",
         // display: "none",
 
-        transition: '0.50s',
+        transition: "0.50s",
     };
     let styles = {
-        width: '50%',
-        height: '100vh',
-        color: '#fff',
+        width: "50%",
+        height: "100vh",
+        color: "#fff",
         lineHeight: 10,
-        padding: '1.5em',
-        backgroundColor: '#fff',
-        marginLeft: '-1400px',
-        transition: '0.50s',
+        padding: "1.5em",
+        backgroundColor: "#fff",
+        marginLeft: "-1400px",
+        transition: "0.50s",
     };
     let border = {
-        border: '1px solid #e1e1e1',
+        border: "1px solid #e1e1e1",
     };
 
     // this is useEffect to dech all restaurant
     useEffect(() => {
-        fetch(`${baseURL}/restaurantuser/allresturent`, {
-            method: 'GET',
+        fetch("http://localhost:8000/restaurantuser/allresturent", {
+            method: "GET",
         })
             .then((res) => res.json())
             .then((data) => {
@@ -77,19 +76,19 @@ function Index() {
                         {state === true ? (
                             <div className="slider index-slider" style={style}>
                                 <div className="resindex-btns">
-                                    <Link to={'/resturentindex'}>
+                                    <Link to={"/resturentindex"}>
                                         <button className="res-btn-login">
                                             Add Restaurant
                                         </button>
                                         <hr style={border} />
                                     </Link>
-                                    <Link to={'/login'}>
+                                    <Link to={"/login"}>
                                         <button className="res-btn-login">
                                             Log in
                                         </button>
                                         <hr style={border} />
                                     </Link>
-                                    <Link to={'/register'}>
+                                    <Link to={"/register"}>
                                         <button className="res-btn-login">
                                             Sign up
                                         </button>
@@ -99,19 +98,19 @@ function Index() {
                             </div>
                         ) : (
                             <div className="slider" style={styles}>
-                                <Link to={'/resturentindex'}>
+                                <Link to={"/resturentindex"}>
                                     <button className="res-btn-login">
                                         Add Restaurant
                                     </button>
                                     <hr style={border} />
                                 </Link>
-                                <Link to={'/login'}>
+                                <Link to={"/login"}>
                                     <button className="res-btn-login">
                                         Log in
                                     </button>
                                     <hr style={border} />
                                 </Link>
-                                <Link to={'/register'}>
+                                <Link to={"/register"}>
                                     <button className="res-btn-login">
                                         Sign up
                                     </button>
@@ -124,17 +123,17 @@ function Index() {
                         welcome to foodies
                     </span>
                     <div className="index-navbar-btns">
-                        <Link to={'/resturentindex'}>
+                        <Link to={"/resturentindex"}>
                             <button className="res-btn-login user-index-btn">
                                 Add Restaurant
                             </button>
                         </Link>
-                        <Link to={'/login'}>
+                        <Link to={"/login"}>
                             <button className="res-btn-login user-index-btn">
                                 Log in
                             </button>
                         </Link>
-                        <Link to={'/register'}>
+                        <Link to={"/register"}>
                             <button className="res-btn-login user-index-btn">
                                 Sign up
                             </button>
@@ -179,7 +178,7 @@ function Index() {
                                 <div>
                                     <img
                                         className="poster mobile-poster "
-                                        src={`${baseURL}/restaurantuser/resImage/${data.posterurl}`}
+                                        src={`http://localhost:8000/restaurantuser/resImage/${data.posterurl}`}
                                         alt=""
                                     />
                                 </div>
@@ -198,7 +197,7 @@ function Index() {
                                             <span>{data.closetime}</span>
                                         </p>
                                     </div>
-                                    <Link to={'/home/' + data._id}>
+                                    <Link to={"/home/" + data._id}>
                                         <button className="order-btn">
                                             Order online
                                         </button>

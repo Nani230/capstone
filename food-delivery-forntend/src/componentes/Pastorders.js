@@ -1,71 +1,70 @@
-import { baseURL } from '../App';
-import { useEffect, useRef, useState } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
-import { MdClose, MdCall, MdLocationOn } from 'react-icons/md';
-import { FaFacebookF, FaInstagram } from 'react-icons/fa';
-import { FaRupeeSign } from 'react-icons/fa';
+import { useEffect, useRef, useState } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { MdClose, MdCall, MdLocationOn } from "react-icons/md";
+import { FaFacebookF, FaInstagram } from "react-icons/fa";
+import { FaRupeeSign } from "react-icons/fa";
 
-import { GrMail } from 'react-icons/gr';
+import { GrMail } from "react-icons/gr";
 function Pastorders() {
     // useStates
     let [allitems, setitems] = useState([]);
     let prams = useRef(useParams());
     let [state, setstate] = useState(false);
-    let [status, setstatus] = useState('');
+    let [status, setstatus] = useState("");
     let [totalprice, setTotalPrice] = useState();
-    let datas = JSON.parse(localStorage.getItem('details'));
+    let datas = JSON.parse(localStorage.getItem("details"));
     let navigate = useNavigate();
     // logout function
     function logout() {
-        localStorage.removeItem('details');
-        navigate('/');
+        localStorage.removeItem("details");
+        navigate("/");
     }
     // internal css
     let style = {
-        width: '70%',
-        height: '100vh',
-        color: '#fff',
+        width: "70%",
+        height: "100vh",
+        color: "#fff",
         lineHeight: 10,
-        backgroundColor: '#fff',
-        marginLeft: '0px',
+        backgroundColor: "#fff",
+        marginLeft: "0px",
         // display: "none",
 
-        transition: '0.50s',
+        transition: "0.50s",
     };
     let styles = {
-        width: '50%',
-        height: '100vh',
-        color: '#fff',
+        width: "50%",
+        height: "100vh",
+        color: "#fff",
         lineHeight: 10,
-        padding: '1.5em',
-        backgroundColor: '#fff',
-        marginLeft: '-1400px',
-        transition: '0.50s',
+        padding: "1.5em",
+        backgroundColor: "#fff",
+        marginLeft: "-1400px",
+        transition: "0.50s",
     };
     let border = {
-        border: '1px solid #e1e1e1',
+        border: "1px solid #e1e1e1",
     };
     let green = {
-        color: 'green',
-        marginTop: '45px',
-        width: '200px',
-        fontWeight: 'bold',
+        color: "green",
+        marginTop: "45px",
+        width: "200px",
+        fontWeight: "bold",
     };
     let red = {
-        color: 'red',
-        marginTop: '45px',
-        width: '200px',
-        fontWeight: 'bold',
+        color: "red",
+        marginTop: "45px",
+        width: "200px",
+        fontWeight: "bold",
     };
     // useEffect to fech all orders of users
     useEffect(() => {
-        let token = JSON.parse(localStorage.getItem('details'));
+        let token = JSON.parse(localStorage.getItem("details"));
         let realtoken = token.token;
-        fetch(`${baseURL}/order/orders/${prams.current.id}`, {
-            method: 'GET',
+        fetch(`http://localhost:8000/order/orders/${prams.current.id}`, {
+            method: "GET",
             headers: {
                 Authorization: `Bearer ${realtoken}`,
-                'Content-Type': 'application/json',
+                "Content-Type": "application/json",
             },
         })
             .then((res) => res.json())
@@ -120,7 +119,8 @@ function Pastorders() {
                                         Hello , {datas.name}
                                     </span>
                                 </button>
-                                <Link to={'/orders/' + datas.id}>
+                                <hr style={border} />
+                                <Link to={"/orders/" + datas.id}>
                                     <button className="res-btn-login">
                                         Orders
                                     </button>
@@ -131,7 +131,7 @@ function Pastorders() {
                                     className="res-btn-login"
                                 >
                                     Logout
-                                </button>{' '}
+                                </button>{" "}
                                 <hr style={border} />
                             </div>
                         </div>
@@ -143,7 +143,7 @@ function Pastorders() {
                             >
                                 X
                             </span>
-                            <Link to={'/orders/' + datas.id}>
+                            <Link to={"/orders/" + datas.id}>
                                 <button className="user-navbar-btn">
                                     Orders
                                 </button>
@@ -161,7 +161,7 @@ function Pastorders() {
                     Hello {datas.name}
                 </span>
                 <div className="navbar-btns">
-                    <Link to={'/cart/' + datas.id}>
+                    <Link to={"/cart/" + datas.id}>
                         <button className="user-navbar-btn-2">Carts</button>
                     </Link>
                     <button onClick={logout} className="user-navbar-btn">
@@ -174,63 +174,90 @@ function Pastorders() {
             <div className="food-main-container">
                 {allitems.map((data, index) => {
                     return (
-                        <div className="hotal-main cart-box" key={index}>
+                        <div className="hotal-main cart-box3" key={index}>
                             <div className="cart-box2">
                                 <div>
                                     <img
                                         className="poster cart-poster"
-                                        src={`${baseURL}/restaurantuser/foodImage/${data.foodItem.posterurl}`}
+                                        src={`http://localhost:8000/restaurantuser/foodImage/${data.foodItem.posterurl}`}
                                         alt=""
                                     />
                                 </div>
                                 <div className="all-orders-container">
                                     <div className="item-container">
-                                        <div className="items-details orders-items-details">
+                                        <div className="items-details items-order-details orders-items-details orders-cart-items-details">
                                             <p>
                                                 Name : {data.foodItem.itemname}
                                             </p>
                                             <p>
-                                                {' '}
+                                                {" "}
                                                 <span>
                                                     <FaRupeeSign />
-                                                </span>{' '}
+                                                </span>{" "}
                                                 {data.foodItem.price}
                                             </p>
                                         </div>
                                     </div>
-                                    <p className="item-quan">
+                                    <p className="item-quan items-order-details">
                                         Quantity : {data.quantity}
                                     </p>
-                                    {data.orderStatus === 'Accepted' ? (
-                                        <p
-                                            className="orderstatus"
-                                            style={green}
-                                        >
-                                            <span className="order-status">
-                                                Status :
-                                            </span>
-                                            {data.orderStatus}
+                                    <div className="users-addres">
+                                        <p>Name : {data.customer.name}</p>
+                                        <p>
+                                            Mobile : {data.customer.ordermobile}
                                         </p>
-                                    ) : null}
-                                    {data.orderStatus === 'Rejected' ? (
-                                        <p className="orderstatus" style={red}>
-                                            <span className="order-status">
-                                                Status :
-                                            </span>
-                                            {data.orderStatus}
+                                    </div>
+                                    <p className="users-addres">
+                                        Addres : {data.customer.addres}
+                                    </p>
+
+                                    <div>
+                                        <div className="order-font-icons  items-order-details ">
+                                            {data.orderStatus === "Accepted" ? (
+                                                <p
+                                                    className="orderstatus"
+                                                    style={green}
+                                                >
+                                                    <span className="order-status">
+                                                        Status :
+                                                    </span>
+                                                    {data.orderStatus}
+                                                </p>
+                                            ) : null}
+                                            {data.orderStatus === "Rejected" ? (
+                                                <p
+                                                    className="orderstatus"
+                                                    style={red}
+                                                >
+                                                    <span className="order-status">
+                                                        Status :
+                                                    </span>
+                                                    {data.orderStatus}
+                                                </p>
+                                            ) : null}
+                                            {data.orderStatus === "pending" ? (
+                                                <p
+                                                    style={{ width: "200px" }}
+                                                    className="orderstatus pending"
+                                                >
+                                                    <span className="order-status">
+                                                        Status :
+                                                    </span>
+                                                    {data.orderStatus}
+                                                </p>
+                                            ) : null}
+                                        </div>
+                                    </div>
+
+                                    <div className="user-addres">
+                                        <p>Name : {data.customer.name}</p>
+                                        <p>
+                                            Mobile : {data.customer.ordermobile}
                                         </p>
-                                    ) : null}
-                                    {data.orderStatus === 'pending' ? (
-                                        <p
-                                            style={{ width: '200px' }}
-                                            className="orderstatus pending"
-                                        >
-                                            <span className="order-status">
-                                                Status :
-                                            </span>
-                                            {data.orderStatus}
-                                        </p>
-                                    ) : null}
+                                    </div>
+                                    <p className="user-addres">
+                                        Addres : {data.customer.addres}
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -239,7 +266,7 @@ function Pastorders() {
 
                 {/* display totalprice */}
                 {allitems.length != 0 ? null : (
-                    <Link to={'/main/' + datas.id}>
+                    <Link to={"/main/" + datas.id}>
                         <button className="explore-btn">
                             Explore Food items
                         </button>

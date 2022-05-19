@@ -1,10 +1,9 @@
-import { baseURL } from '../App';
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function Registration() {
     // useStates
-    let [message, setmessage] = useState('');
+    let [message, setmessage] = useState("");
     let [box, setbox] = useState(false);
     // collecting data from user
     let users = {};
@@ -18,10 +17,10 @@ function Registration() {
 
             // console.log(users)
 
-            fetch(`${baseURL}/user/register`, {
-                method: 'POST',
+            fetch("http://localhost:8000/user/register", {
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/json',
+                    "Content-Type": "application/json",
                 },
                 body: JSON.stringify(users),
             })
@@ -41,7 +40,7 @@ function Registration() {
                     console.log(err);
                 });
         } else {
-            console.log('password donot match');
+            console.log("password donot match");
         }
     }
 
@@ -64,7 +63,7 @@ function Registration() {
                                     type="text"
                                     placeholder="Enter Name"
                                     onChange={(event) => {
-                                        readvalue('name', event.target.value);
+                                        readvalue("name", event.target.value);
                                     }}
                                 />
                                 <input
@@ -72,7 +71,7 @@ function Registration() {
                                     type="number"
                                     placeholder="Enter Number"
                                     onChange={(event) => {
-                                        readvalue('mobile', event.target.value);
+                                        readvalue("mobile", event.target.value);
                                     }}
                                 />
                                 <input
@@ -80,7 +79,7 @@ function Registration() {
                                     type="email"
                                     placeholder="Enter Mail"
                                     onChange={(event) => {
-                                        readvalue('email', event.target.value);
+                                        readvalue("email", event.target.value);
                                     }}
                                 />
                                 <input
@@ -89,8 +88,8 @@ function Registration() {
                                     placeholder="Enter Password"
                                     onChange={(event) => {
                                         readvalue(
-                                            'password',
-                                            event.target.value,
+                                            "password",
+                                            event.target.value
                                         );
                                     }}
                                 />
@@ -100,8 +99,8 @@ function Registration() {
                                     placeholder="Confrom password"
                                     onChange={(event) => {
                                         readvalue(
-                                            'cpassword',
-                                            event.target.value,
+                                            "cpassword",
+                                            event.target.value
                                         );
                                     }}
                                 />
@@ -113,9 +112,9 @@ function Registration() {
                                 >
                                     Signup
                                 </button>
-                                <Link to={'/login'}>
+                                <Link to={"/login"}>
                                     <button className="reg-sign-btn">
-                                        {' '}
+                                        {" "}
                                         Signin
                                     </button>
                                 </Link>

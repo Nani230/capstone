@@ -1,16 +1,15 @@
-import { baseURL } from '../App';
-import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { MdClose, MdCall, MdLocationOn } from 'react-icons/md';
-import { FaFacebookF, FaInstagram } from 'react-icons/fa';
-import { GrMail } from 'react-icons/gr';
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { MdClose, MdCall, MdLocationOn } from "react-icons/md";
+import { FaFacebookF, FaInstagram } from "react-icons/fa";
+import { GrMail } from "react-icons/gr";
 function Main() {
     // this is navigate to navigate on tto another
     let navigate = useNavigate();
     // this is logout function
     function logout() {
-        localStorage.removeItem('details');
-        navigate('/');
+        localStorage.removeItem("details");
+        navigate("/");
     }
     //    useState
     let [state, setstate] = useState(false);
@@ -18,36 +17,36 @@ function Main() {
 
     // internal css
     let style = {
-        width: '70%',
-        height: '100vh',
-        color: '#fff',
+        width: "70%",
+        height: "100vh",
+        color: "#fff",
         lineHeight: 10,
-        backgroundColor: '#fff',
-        marginLeft: '0px',
+        backgroundColor: "#fff",
+        marginLeft: "0px",
         // display: "none",
 
-        transition: '0.50s',
+        transition: "0.50s",
     };
     let styles = {
-        width: '50%',
-        height: '100vh',
-        color: '#fff',
+        width: "50%",
+        height: "100vh",
+        color: "#fff",
         lineHeight: 10,
-        padding: '1.5em',
-        backgroundColor: '#fff',
-        marginLeft: '-1400px',
-        transition: '0.50s',
+        padding: "1.5em",
+        backgroundColor: "#fff",
+        marginLeft: "-1400px",
+        transition: "0.50s",
     };
     let border = {
-        border: '1px solid #e1e1e1',
+        border: "1px solid #e1e1e1",
     };
     // user details from localStorage
-    let data = JSON.parse(localStorage.getItem('details'));
+    let data = JSON.parse(localStorage.getItem("details"));
     console.log(data);
     // useEffect to fech all restaurant
     useEffect(() => {
-        fetch(`${baseURL}/restaurantuser/allresturent`, {
-            method: 'GET',
+        fetch("http://localhost:8000/restaurantuser/allresturent", {
+            method: "GET",
         })
             .then((res) => res.json())
             .then((data) => {
@@ -93,7 +92,7 @@ function Main() {
                                     </span>
                                 </button>
                                 <hr style={border} />
-                                <Link to={'/orders/' + data.id}>
+                                <Link to={"/orders/" + data.id}>
                                     <button className="res-btn-login">
                                         Orders
                                     </button>
@@ -104,7 +103,7 @@ function Main() {
                                     className="res-btn-login"
                                 >
                                     Logout
-                                </button>{' '}
+                                </button>{" "}
                                 <hr style={border} />
                             </div>
                         </div>
@@ -116,7 +115,7 @@ function Main() {
                             >
                                 X
                             </span>
-                            <Link to={'/orders/' + data.id}>
+                            <Link to={"/orders/" + data.id}>
                                 <button className="user-navbar-btn">
                                     Orders
                                 </button>
@@ -130,10 +129,10 @@ function Main() {
                     Hello {data.name}
                 </span>
                 <div className="navbar-btns">
-                    <Link to={'/orders/' + data.id}>
+                    <Link to={"/orders/" + data.id}>
                         <button className="user-navbar-btn">Orders</button>
                     </Link>
-                    <Link to={'/cart/' + data.id}>
+                    <Link to={"/cart/" + data.id}>
                         <button className="user-navbar-btn-2">Carts</button>
                     </Link>
                     <button onClick={logout} className="user-navbar-btn">
@@ -176,7 +175,7 @@ function Main() {
                                 <div>
                                     <img
                                         className="poster  mobile-poster"
-                                        src={`${baseURL}/restaurantuser/resImage/${data.posterurl}`}
+                                        src={`http://localhost:8000/restaurantuser/resImage/${data.posterurl}`}
                                         alt=""
                                     />
                                 </div>
@@ -195,7 +194,7 @@ function Main() {
                                             <span>{data.closetime}</span>
                                         </p>
                                     </div>
-                                    <Link to={'/userhome/' + data._id}>
+                                    <Link to={"/userhome/" + data._id}>
                                         <button className="order-btn">
                                             Order online
                                         </button>

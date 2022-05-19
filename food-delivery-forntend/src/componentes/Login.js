@@ -1,10 +1,9 @@
-import { baseURL } from '../App';
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
     // this is useState
-    let [message, setmessage] = useState('');
+    let [message, setmessage] = useState("");
     let [box, setbox] = useState(false);
     // this is navigate to navigate
     let navigate = useNavigate();
@@ -20,12 +19,12 @@ function Login() {
         console.log(user);
 
         if ((user.password === undefined) & (user.mobile === undefined)) {
-            console.log('comething is wrong');
+            console.log("comething is wrong");
         } else {
-            fetch(`${baseURL}/user/login`, {
-                method: 'POST',
+            fetch("http://localhost:8000/user/login", {
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/json',
+                    "Content-Type": "application/json",
                 },
                 body: JSON.stringify(user),
             })
@@ -34,18 +33,18 @@ function Login() {
                     console.log(data);
                     if (data.success === true) {
                         localStorage.setItem(
-                            'details',
+                            "details",
                             JSON.stringify({
                                 token: data.token,
                                 id: data._id,
                                 name: data.name,
                                 role: data.role,
-                            }),
+                            })
                         );
 
-                        navigate('/main/' + data._id);
+                        navigate("/main/" + data._id);
                     } else {
-                        alert('password or email is wrong');
+                        alert("password or email is wrong");
                         // setmessage(data.message);
                         // setbox(true);
                         // setTimeout(() => {
@@ -77,7 +76,7 @@ function Login() {
                                 type="email"
                                 placeholder="Enter Mail"
                                 onChange={(event) => {
-                                    readvalue('email', event.target.value);
+                                    readvalue("email", event.target.value);
                                 }}
                             />
                             <input
@@ -85,11 +84,11 @@ function Login() {
                                 type="password"
                                 placeholder="Enter Password"
                                 onChange={(event) => {
-                                    readvalue('password', event.target.value);
+                                    readvalue("password", event.target.value);
                                 }}
                             />
                             <div className="reg-btns login-btns">
-                                <Link to={'/register'}>
+                                <Link to={"/register"}>
                                     <button className="reg-sign-btn">
                                         Register
                                     </button>
