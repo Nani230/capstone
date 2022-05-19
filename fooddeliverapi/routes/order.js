@@ -82,7 +82,7 @@ router.get("/orders/:id", verifytoken, (req, res) => {
             items.map((data) => {
                 console.log(data._id);
 
-                if ((data.customer == id) & (data.foodItem != null)) {
+                if ((data.customer._id == id) & (data.foodItem != null)) {
                     allitems.push(data);
                 } else {
                     console.log("err");
