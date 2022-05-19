@@ -154,9 +154,6 @@ router.post("/checkout", verifyToken, (req, res) => {
                                 await foodModal.updateOne(
                                     { _id: foodId },
                                     {
-                                        usermobile:
-                                            datacart.customer.ordermobile,
-                                        addres: datacart.customer.addres,
                                         quantity:
                                             data.quantity - orderData.quantity,
                                     }

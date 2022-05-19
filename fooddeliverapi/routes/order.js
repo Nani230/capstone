@@ -21,7 +21,7 @@ router.post("/create/:id", verifytoken, (req, res) => {
             foodModel
                 .findOne({ _id: body.foodItem })
                 .then((data) => {
-                    console.log(data);
+                    console.log(data1);
 
                     if (data.quantity > 0) {
                         let orderData = {
@@ -35,8 +35,14 @@ router.post("/create/:id", verifytoken, (req, res) => {
                         const orders = new orderModel(orderData);
                         orders
                             .save()
-                            .then(() => {
-                                console.log(data.quantity);
+                            .then(async () => {
+                                await foodModel.updateOne(
+                                    { _id: body.foodItem },
+                                    {
+                                        quantity:
+                                            data.quantity - orderData.quantity,
+                                    }
+                                );
                                 res.status(200).send({
                                     message: "Ordered!!!",
                                     success: true,
