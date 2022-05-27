@@ -87,7 +87,7 @@ function Login() {
                                     readvalue("password", event.target.value);
                                 }}
                             />
-                            <div className="reg-btns login-btns">
+                            <div className=" login-btns">
                                 <Link to={"/register"}>
                                     <button className="reg-sign-btn">
                                         Register

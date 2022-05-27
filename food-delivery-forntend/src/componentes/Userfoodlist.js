@@ -351,7 +351,7 @@ function Userfoodlist() {
                             }}
                         />
                         <input
-                            className="logininput3"
+                            className="logininput3 logininput33"
                             type="text"
                             placeholder="add addres"
                             defaultValue={useraddres.addres}
@@ -360,7 +360,7 @@ function Userfoodlist() {
                             }}
                         />
                     </div>
-                    <div className="reg-btns">
+                    <div className="reg-btnss">
                         <button
                             onClick={orderaddstatefalse}
                             className="reg-sign-btn updata-cancel-btn"
@@ -411,7 +411,7 @@ function Userfoodlist() {
                             </button>
                         </div>
                     </div>
-                    <div className="reg-btns">
+                    <div className="reg-btnss">
                         <button
                             onClick={addstatefalse}
                             className="reg-sign-btn updata-cancel-btn"

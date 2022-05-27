@@ -60,7 +60,7 @@ function Pastorders() {
     useEffect(() => {
         let token = JSON.parse(localStorage.getItem("details"));
         let realtoken = token.token;
-        fetch(`http://localhost:8000/order/orders/${prams.current.id}`, {
+        fetch(`http://localhost:8000/order/orders/${datas.id}`, {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${realtoken}`,
@@ -251,12 +251,10 @@ function Pastorders() {
 
                                     <div className="user-addres">
                                         <p>Name : {data.customer.name}</p>
-                                        <p>
-                                            Mobile : {data.customer.ordermobile}
-                                        </p>
+                                        <p>Mobile : {data.ordermobile}</p>
                                     </div>
                                     <p className="user-addres">
-                                        Addres : {data.customer.addres}
+                                        Addres : {data.addres}
                                     </p>
                                 </div>
                             </div>
