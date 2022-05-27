@@ -530,6 +530,7 @@
         width: 350px !important;
         display: flex !important;
         justify-content: space-between !important;
+        flex-direction: row-reverse !important;
     }
     .login-btns {
         width: 350px !important;
