@@ -24,7 +24,7 @@ const orderSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
-        ordermobile: { type: Number, required: true, unique: true },
+        ordermobile: { type: Number, required: true },
         orderStatus: {
             type: String,
             required: true,
