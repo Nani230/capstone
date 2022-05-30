@@ -74,6 +74,8 @@ router.get("/orders/:id", verifytoken, (req, res) => {
     orderModel
         .find()
         .populate("foodItem")
+        .populate("customer")
+
 
         .then((data) => {
             let allitems = [];
